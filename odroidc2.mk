@@ -131,4 +131,5 @@ BUILD_WITH_LOWMEM_COMMON_CONFIG := true
 BOARD_USES_USB_PM := true
 
 PRODUCT_PACKAGES += \
-	Utility
+	Utility \
+	updater

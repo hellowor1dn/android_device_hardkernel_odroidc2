@@ -1,0 +1,17 @@
+ODROIDC2-UBOOT-CONFIG
+
+setenv dtbaddr 0x1000000
+setenv loadaddr 0x20000000
+
+setenv hdmimode "1080p"
+
+setenv rootopt "root=/dev/mmcblk0p3 rw init=/init"
+setenv consoleopt "console=ttyS0,115200"
+setenv androidopt "androidboot.hardware=odroidc2 androidboot.serialno=${fbt_id#}"
+setenv selinuxopt "androidboot.selinux=permissive"
+
+setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} ${androidopt} ${selinuxopt}"
+
+movi read dtb 0 ${dtbaddr}
+movi read boot 0 ${loadaddr}
+booti ${loadaddr} - ${dtbaddr}
