@@ -15,8 +15,6 @@ KERNEL_MODULES_INSTALL := system
 KERNEL_MODULES_OUT := $(TARGET_OUT)/lib/modules
 BOARD_MKBOOTIMG_ARGS := --second $(PRODUCT_OUT)/$(KERNEL_DEVICETREE).dtb
 
-WIFI_OUT  := $(TARGET_OUT_INTERMEDIATES)/hardware/wifi
-
 PREFIX_CROSS_COMPILE=aarch64-linux-gnu-
 
 define cp-modules
@@ -34,6 +32,8 @@ mdpath=`find $(KERNEL_MODULES_OUT) -type f -name modules.dep`;\
        for i in $$ko; do echo $$i; mv $$i $(KERNEL_MODULES_OUT)/; done;\
        fi;\
        ko=`find hardware/amlogic/thermal -type f -name *.ko`;\
+       for i in $$ko; do echo $$i; mv $$i $(KERNEL_MODULES_OUT)/; done;
+       ko=`find hardware/wifi -type f -name *.ko`;\
        for i in $$ko; do echo $$i; mv $$i $(KERNEL_MODULES_OUT)/; done;
 endef
 
@@ -61,6 +61,9 @@ $(KERNEL_IMAGE): $(KERNEL_OUT) $(KERNEL_CONFIG)
 	$(MAKE) -C $(shell pwd)/$(PRODUCT_OUT)/obj/KERNEL_OBJ \
 		M=$(shell pwd)/hardware/amlogic/thermal/ ARCH=$(KERNEL_ARCH) \
 		CROSS_COMPILE=$(PREFIX_CROSS_COMPILE) modules
+	$(MAKE) -C $(shell pwd)/$(PRODUCT_OUT)/obj/KERNEL_OBJ \
+		M=$(shell pwd)/hardware/wifi/realtek/drivers/8192cu/rtl8xxx_CU/ \
+		ARCH=$(KERNEL_ARCH) CROSS_COMPILE=$(PREFIX_CROSS_COMPILE)
 	$(gpu-modules)
 	$(cp-modules)
 	$(mv-modules)

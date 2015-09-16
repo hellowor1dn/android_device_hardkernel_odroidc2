@@ -50,20 +50,41 @@ WITH_LIBPLAYER_MODULE := false
 PRODUCT_COPY_FILES += \
     device/hardkernel/odroidc2/fstab.odroidc2:root/fstab.odroidc2
 
-#########################################################################
-#
-#                                                WiFi
-#
-#########################################################################
+#-----------------------------------------------------------------------------
+# WiFi
+#-----------------------------------------------------------------------------
+BOARD_WIFI_VENDOR		:= realtek
+BOARD_WLAN_DEVICE		:= rtl8192cu
+BOARD_WPA_SUPPLICANT_DRIVER	:= NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB:= lib_driver_cmd_nl80211
+WPA_SUPPLICANT_VERSION		:= VER_0_8_X
 
-WIFI_MODULE := bcm4354
-include device/hardkernel/common/wifi.mk
+WIFI_DRIVER			:= rtl8192cu
+WIFI_DRIVER_MODULE_NAME		:= rtl8192cu
+WIFI_DRIVER_MODULE_PATH		:= /system/lib/modules/8192cu.ko
+
+WIFI_DRIVER_MODULE_ARG		:= ""
+WIFI_FIRMWARE_LOADER		:= ""
+WIFI_DRIVER_FW_PATH_STA		:= ""
+WIFI_DRIVER_FW_PATH_AP		:= ""
+WIFI_DRIVER_FW_PATH_P2P		:= ""
+WIFI_DRIVER_FW_PATH_PARAM	:= ""
+
+PRODUCT_PROPERTY_OVERRIDES += \
+	wifi.interface=wlan0
 
 # Change this to match target country
 # 11 North America; 14 Japan; 13 rest of world
-PRODUCT_DEFAULT_WIFI_CHANNELS := 11
+PRODUCT_DEFAULT_WIFI_CHANNELS := 13
+
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/config.txt:system/etc/wifi/4354/config.txt
+	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+	device/hardkernel/$(TARGET_PRODUCT)/wifi/wifi_id_list.txt:system/etc/wifi_id_list.txt
+
+PRODUCT_PACKAGES += \
+	wpa_supplicant.conf \
+	wpa_supplicant_overlay.conf \
+	p2p_supplicant_overlay.conf
 
 PRODUCT_PACKAGES += libbt-vendor
 
