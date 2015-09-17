@@ -21,6 +21,9 @@ PRODUCT_COPY_FILES += \
     device/hardkernel/odroidc2/ueventd.odroidc2.rc:root/ueventd.odroidc2.rc
 
 PRODUCT_COPY_FILES += \
+    device/hardkernel/odroidc2/recovery/init.recovery.odroidc2.rc:root/init.recovery.odroidc2.rc
+
+PRODUCT_COPY_FILES += \
     device/hardkernel/odroidc2/files/media_profiles.xml:system/etc/media_profiles.xml \
     device/hardkernel/odroidc2/files/audio_policy.conf:system/etc/audio_policy.conf \
     device/hardkernel/odroidc2/files/media_codecs.xml:system/etc/media_codecs.xml \
