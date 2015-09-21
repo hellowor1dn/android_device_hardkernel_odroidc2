@@ -26,15 +26,18 @@ endef
 
 define mv-modules
 mdpath=`find $(KERNEL_MODULES_OUT) -type f -name modules.dep`;\
-       if [ "$$mdpath" != "" ]; then \
-       mpath=`dirname $$mdpath`;\
-       ko=`find $$mpath/kernel -type f -name *.ko`;\
-       for i in $$ko; do echo $$i; mv $$i $(KERNEL_MODULES_OUT)/; done;\
-       fi;\
-       ko=`find hardware/amlogic/thermal -type f -name *.ko`;\
-       for i in $$ko; do echo $$i; mv $$i $(KERNEL_MODULES_OUT)/; done;
-       ko=`find hardware/wifi -type f -name *.ko`;\
-       for i in $$ko; do echo $$i; mv $$i $(KERNEL_MODULES_OUT)/; done;
+	if [ "$$mdpath" != "" ]; then \
+	mpath=`dirname $$mdpath`;\
+	ko=`find $$mpath/kernel -type f -name *.ko`;\
+	for i in $$ko; do echo $$i; mv $$i $(KERNEL_MODULES_OUT)/; done;\
+	fi;\
+	ko=`find hardware/amlogic/thermal -type f -name *.ko`;\
+	for i in $$ko; do echo $$i; mv $$i $(KERNEL_MODULES_OUT)/; done;
+	ko=`find hardware/wifi -type f -name *.ko`;\
+	for i in $$ko; do echo $$i; mv $$i $(KERNEL_MODULES_OUT)/; done;
+	ko=`find hardware/backports -type f -name *.ko`;\
+	mkdir -p $(KERNEL_MODULES_OUT)/backports; \
+	for i in $$ko; do echo $$i; mv $$i $(KERNEL_MODULES_OUT)/backports/; done;
 endef
 
 define clean-module-folder
@@ -64,6 +67,11 @@ $(KERNEL_IMAGE): $(KERNEL_OUT) $(KERNEL_CONFIG)
 	$(MAKE) -C $(shell pwd)/$(PRODUCT_OUT)/obj/KERNEL_OBJ \
 		M=$(shell pwd)/hardware/wifi/realtek/drivers/8192cu/rtl8xxx_CU/ \
 		ARCH=$(KERNEL_ARCH) CROSS_COMPILE=$(PREFIX_CROSS_COMPILE)
+	$(MAKE) -C hardware/backports O=../$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) \
+		CROSS_COMPILE=$(PREFIX_CROSS_COMPILE) KLIB_BUILD=../../$(KERNEL_OUT) \
+		defconfig-odroidc
+	$(MAKE) -C hardware/backports O=../$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) \
+		CROSS_COMPILE=$(PREFIX_CROSS_COMPILE) KLIB_BUILD=../../$(KERNEL_OUT)
 	$(gpu-modules)
 	$(cp-modules)
 	$(mv-modules)
