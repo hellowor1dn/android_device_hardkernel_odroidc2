@@ -86,6 +86,11 @@ PRODUCT_PACKAGES += \
 	wpa_supplicant_overlay.conf \
 	p2p_supplicant_overlay.conf
 
+# Ralink RT2800 USB Dongle firmware & configuration
+PRODUCT_COPY_FILES += \
+	device/hardkernel/$(TARGET_PRODUCT)/wifi/rt2870.bin:root/lib/firmware/rt2870.bin \
+	device/hardkernel/$(TARGET_PRODUCT)/wifi/RT2870STA.dat:system/etc/Wireless/RT2870STA/RT2870STA.dat
+
 PRODUCT_PACKAGES += libbt-vendor
 
 PRODUCT_COPY_FILES += \
