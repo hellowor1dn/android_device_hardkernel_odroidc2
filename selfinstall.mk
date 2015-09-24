@@ -26,8 +26,8 @@ SELFINSTALL_CACHE_IMAGE := $(SELFINSTALL_DIR)/cache.ext4
 # Bootloader
 #
 bootable/uboot/build/u-boot-orig.bin:
-	make -C bootable/uboot $(TARGET_PRODUCT)_config
-	make -C bootable/uboot
+	make -C bootable/uboot ARCH=$(TARGET_ARCH) $(TARGET_PRODUCT)_config
+	make -C bootable/uboot ARCH=$(TARGET_ARCH)
 
 .PHONY: $(PRODUCT_OUT)/bl2.bin.hardkernel
 $(PRODUCT_OUT)/bl2.bin.hardkernel:
