@@ -28,7 +28,8 @@ PRODUCT_COPY_FILES += \
     device/hardkernel/odroidc2/files/audio_policy.conf:system/etc/audio_policy.conf \
     device/hardkernel/odroidc2/files/media_codecs.xml:system/etc/media_codecs.xml \
     device/hardkernel/odroidc2/files/mixer_paths.xml:system/etc/mixer_paths.xml \
-    device/hardkernel/odroidc2/files/mesondisplay.cfg:system/etc/mesondisplay.cfg
+    device/hardkernel/odroidc2/files/mesondisplay.cfg:system/etc/mesondisplay.cfg \
+    device/hardkernel/odroidc2/files/preinstall.sh:system/bin/preinstall.sh
 
 # remote IME config file
 PRODUCT_COPY_FILES += \

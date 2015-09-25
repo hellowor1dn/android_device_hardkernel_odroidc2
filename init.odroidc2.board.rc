@@ -52,3 +52,11 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
+
+on property:init.svc.bootanim=stopped
+    start preinstall
+
+service preinstall /system/bin/preinstall.sh
+    user root
+    group root
+    oneshot
