@@ -8,7 +8,7 @@ setenv hdmimode "1080p"
 setenv rootopt "root=/dev/mmcblk0p3 rw init=/init"
 setenv consoleopt "console=ttyS0,115200"
 setenv androidopt "androidboot.hardware=odroidc2 androidboot.serialno=${fbt_id#}"
-setenv selinuxopt "androidboot.selinux=permissive"
+setenv selinuxopt "androidboot.selinux=disabled"
 
 setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} ${androidopt} ${selinuxopt}"
 
