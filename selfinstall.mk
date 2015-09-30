@@ -48,7 +48,6 @@ $(SELFINSTALL_DIR)/update.unsigned.zip: userdataimage cacheimage rootsystem reco
 	cp -af $(PRODUCT_OUT)/rootsystem.img $(UPDATE_PACKAGE_PATH)
 	cp -af $(INSTALLED_USERDATAIMAGE_TARGET) $(UPDATE_PACKAGE_PATH)
 	cp -af $(INSTALLED_CACHEIMAGE_TARGET) $(UPDATE_PACKAGE_PATH)
-	cp -af device/hardkernel/$(TARGET_PRODUCT)/recovery/system $(UPDATE_PACKAGE_PATH)
 	cp -af $(PRODUCT_OUT)/system/bin/updater \
 		$(UPDATE_PACKAGE_PATH)/META-INF/com/google/android/update-binary
 	cp -af $(TARGET_DEVICE_DIR)/recovery/updater-script \
