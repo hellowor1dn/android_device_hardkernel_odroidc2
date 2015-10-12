@@ -75,7 +75,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Change this to match target country
 # 11 North America; 14 Japan; 13 rest of world
-PRODUCT_DEFAULT_WIFI_CHANNELS := 13
+PRODUCT_DEFAULT_WIFI_CHANNELS := 11
 
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
