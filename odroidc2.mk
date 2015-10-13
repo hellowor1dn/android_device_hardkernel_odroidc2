@@ -79,7 +79,9 @@ PRODUCT_DEFAULT_WIFI_CHANNELS := 11
 
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-	device/hardkernel/$(TARGET_PRODUCT)/wifi/wifi_id_list.txt:system/etc/wifi_id_list.txt
+	device/hardkernel/$(TARGET_PRODUCT)/wifi/wifi_id_list.txt:system/etc/wifi_id_list.txt \
+	device/hardkernel/$(TARGET_PRODUCT)/wifi/rtl8192cu:system/etc/modprobe.d/rtl8192cu \
+	device/hardkernel/$(TARGET_PRODUCT)/wifi/rt2800usb:system/etc/modprobe.d/rt2800usb
 
 PRODUCT_PACKAGES += \
 	wpa_supplicant.conf \
