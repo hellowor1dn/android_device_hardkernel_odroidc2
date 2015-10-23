@@ -3,7 +3,7 @@ ODROIDC2-UBOOT-CONFIG
 setenv dtbaddr 0x1000000
 setenv loadaddr 0x20000000
 
-setenv hdmimode "1080p"
+setenv hdmimode "720p60hz"
 
 setenv rootopt "root=/dev/mmcblk0p3 rw init=/init"
 setenv consoleopt "console=ttyS0,115200"
