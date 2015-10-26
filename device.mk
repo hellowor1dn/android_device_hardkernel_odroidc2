@@ -40,7 +40,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_AAPT_CONFIG := xlarge hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
-PRODUCT_CHARACTERISTICS := mbx,nosdcard
+PRODUCT_CHARACTERISTICS := tablet
 
 DEVICE_PACKAGE_OVERLAYS := \
     device/hardkernel/odroidc2/overlay
