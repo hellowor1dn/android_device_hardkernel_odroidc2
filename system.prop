@@ -50,6 +50,12 @@ media.libplayer.curlenable=true
 media.libplayer.modules=vhls_mod,dash_mod,curl_mod,prhls_mod,vm_mod
 
 
+# GPS
+# support BAUD rate 4800, 9600
+ro.kernel.android.gps=/dev/ttyACM0
+ro.kernel.android.gps.speed=9600
+#ro.kernel.android.gps.speed=4800
+
 ######## UBOOTENV VARIBLES - r/w as system properties ##########
 #
 #  Now we can load ubootenv varibles to system properties.
