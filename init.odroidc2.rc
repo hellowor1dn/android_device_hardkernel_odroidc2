@@ -61,11 +61,6 @@ on post-fs-data
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 system dhcp
 
-    mkdir /data/misc/etc 0777 system pppoe
-    mkdir /data/misc/etc/ppp 0777 system pppoe
-    chown system system /etc/ppp
-    chmod 0770 /etc/ppp
-
     # we will remap this as /storage/sdcard0 with the sdcard fuse tool
     mkdir /data/media 0770 media_rw media_rw
 
@@ -418,12 +413,6 @@ service remotecfg /system/bin/remotecfg /system/etc/remote.conf
     class main
     oneshot
     seclabel u:r:remotecfg:s0
-
-service pppoe_wrapper /system/bin/pppoe_wrapper
-    class main
-    group system inet
-    oneshot
-    seclabel u:r:pppoe_wrapper:s0
 
 service usbpm /system/bin/usbtestpm
     class main

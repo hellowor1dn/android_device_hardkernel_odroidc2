@@ -144,28 +144,6 @@ PRODUCT_LOCALES := en_US en_AU en_IN fr_FR it_IT es_ES et_EE de_DE nl_NL cs_CZ p
 
 #################################################################################
 #
-#                                                PPPOE
-#
-#################################################################################
-
-BUILD_WITH_PPPOE := true
-
-ifeq ($(BUILD_WITH_PPPOE),true)
-PRODUCT_PACKAGES += \
-    PPPoE \
-    libpppoejni \
-    libpppoe \
-    pppoe_wrapper \
-    pppoe \
-    droidlogic.frameworks.pppoe \
-    droidlogic.external.pppoe \
-    droidlogic.external.pppoe.xml
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.platform.has.pppoe=true
-endif
-
-#################################################################################
-#
 #                                                DEFAULT LOWMEMORYKILLER CONFIG
 #
 #################################################################################
