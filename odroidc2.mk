@@ -175,6 +175,7 @@ BOARD_USES_USB_PM := true
 
 PRODUCT_PACKAGES += \
 	Utility \
-	updater
+	updater \
+	su
 # inherit from the non-open-source side, if present
 $(call inherit-product-if-exists, device/hardkernel/proprietary/proprietary.mk)

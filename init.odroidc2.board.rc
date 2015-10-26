@@ -60,3 +60,10 @@ service preinstall /system/bin/preinstall.sh
     user root
     group root
     oneshot
+
+# su daemon$
+service su_daemon /system/xbin/su --daemon
+    class core
+    user root
+    group root
+    oneshot
