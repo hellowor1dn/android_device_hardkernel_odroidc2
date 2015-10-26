@@ -76,3 +76,6 @@
 #consumerir
 /dev/irblaster1           0660   system     system
 
+# GPS
+/dev/ttyACM*   0666    gps             gps
+/dev/ttyUSB*   0666    gps             gps
