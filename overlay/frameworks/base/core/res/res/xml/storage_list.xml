@@ -28,6 +28,12 @@
              android:mtpReserve="100"/>
 
     <storage
+             android:mountPoint="/storage/sdcard0"
+             android:storageDescription="@string/storage_internal2"
+             android:removable="false"
+             android:maxFileSize="4096" />
+
+    <storage
              android:mountPoint="/storage/sdcard1"
              android:storageDescription="@string/storage_sd_card"
              android:removable="true"
