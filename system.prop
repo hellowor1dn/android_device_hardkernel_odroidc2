@@ -130,3 +130,9 @@ ubootenv.var.cvbsmode=
 ubootenv.var.hdmimode=
 ubootenv.var.is.bestmode=
 ubootenv.var.disp.fromleft=
+
+#hdmi rotation
+persist.demo.hdmirotation=landscape
+
+#set to 0 temporarily so touch works without other changes
+ro.sf,hwrotation=0
