@@ -30,7 +30,8 @@ PRODUCT_COPY_FILES += \
     device/hardkernel/odroidc2/files/mixer_paths.xml:system/etc/mixer_paths.xml \
     device/hardkernel/odroidc2/files/mesondisplay.cfg:system/etc/mesondisplay.cfg \
     device/hardkernel/odroidc2/files/boot.ini.template:system/etc/boot.ini.template \
-    device/hardkernel/odroidc2/files/preinstall.sh:system/bin/preinstall.sh
+    device/hardkernel/odroidc2/files/preinstall.sh:system/bin/preinstall.sh \
+    device/hardkernel/odroidc2/files/hardkernel-720.bmp:system/etc/hardkernel-720.bmp
 
 # remote IME config file
 PRODUCT_COPY_FILES += \
