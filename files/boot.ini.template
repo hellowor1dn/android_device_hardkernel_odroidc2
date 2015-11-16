@@ -8,9 +8,12 @@ setenv hdmimode "720p60hz"
 setenv rootopt "root=/dev/mmcblk0p3 rw init=/init"
 setenv consoleopt "console=ttyS0,115200"
 setenv androidopt "androidboot.hardware=odroidc2 androidboot.serialno=${fbt_id#}"
+setenv logoopt "osd1,loaded,${fb_addr},${hdmimode}
 setenv selinuxopt "androidboot.selinux=disabled"
 
-setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} ${androidopt} ${selinuxopt}"
+setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} logo=${logoopt} ${androidopt} ${selinuxopt}"
+
+showlogo ${hdmimode}
 
 movi read dtb 0 ${dtbaddr}
 movi read boot 0 ${loadaddr}
