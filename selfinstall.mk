@@ -29,12 +29,12 @@ bootable/uboot/build/u-boot-orig.bin:
 	make -C bootable/uboot ARCH=$(TARGET_ARCH) $(TARGET_PRODUCT)_config
 	make -C bootable/uboot ARCH=$(TARGET_ARCH)
 
-.PHONY: $(PRODUCT_OUT)/bl2.bin.hardkernel
-$(PRODUCT_OUT)/bl2.bin.hardkernel:
-#	cp -a bootable/uboot/sd_fuse/bl2.bin.hardkernel $@
+.PHONY: $(PRODUCT_OUT)/bl1.bin.hardkernel
+$(PRODUCT_OUT)/bl1.bin.hardkernel:
+	cp -a bootable/uboot/sd_fuse/bl1.bin.hardkernel $@
 
 $(PRODUCT_OUT)/u-boot.bin: bootable/uboot/build/u-boot-orig.bin
-	cp -a bootable/uboot/fip/u-boot.bin.sd.bin $@
+	cp -a bootable/uboot/sd_fuse/u-boot.bin $@
 
 #
 # Update image : update.zip
@@ -87,11 +87,13 @@ $(SELFINSTALL_CACHE_IMAGE): $(SELFINSTALL_DIR)/cache.img
 $(PRODUCT_OUT)/selfinstall-$(TARGET_DEVICE).bin: \
 	$(INSTALLED_BOOTIMAGE_TARGET) \
 	$(INSTALLED_RECOVERYIMAGE_TARGET) \
-	$(PRODUCT_OUT)/bl2.bin.hardkernel \
+	$(PRODUCT_OUT)/bl1.bin.hardkernel \
 	$(PRODUCT_OUT)/u-boot.bin \
 	$(SELFINSTALL_CACHE_IMAGE)
 	@echo "Creating installable single image file..."
-	dd if=$(PRODUCT_OUT)/u-boot.bin of=$@ bs=512 seek=0
+	dd if=$(PRODUCT_OUT)/bl1.bin.hardkernel of=$@ bs=1 count=442
+	dd if=$(PRODUCT_OUT)/bl1.bin.hardkernel of=$@ bs=512 skip=1 seek=1
+	dd if=$(PRODUCT_OUT)/u-boot.bin of=$@ bs=512 seek=97
 	dd if=$(BOOTLOADER_MESSAGE) of=$@ bs=512 seek=1432
 	dd if=$(PRODUCT_OUT)/meson64_odroidc2.dtb of=$@ bs=512 seek=1504
 	dd if=$(PRODUCT_OUT)/obj/KERNEL_OBJ/arch/arm64/boot/Image of=$@ bs=512 seek=1632
