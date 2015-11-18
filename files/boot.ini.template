@@ -5,7 +5,7 @@ setenv loadaddr 0x20000000
 
 setenv hdmimode "720p60hz"
 
-setenv rootopt "root=/dev/mmcblk0p3 rw init=/init"
+setenv rootopt "root=/dev/mmcblk0p3 rw init=/init rootwait"
 setenv consoleopt "console=ttyS0,115200"
 setenv androidopt "androidboot.hardware=odroidc2 androidboot.serialno=${fbt_id#}"
 setenv logoopt "osd1,loaded,${fb_addr},${hdmimode}
