@@ -36,6 +36,9 @@ $(PRODUCT_OUT)/bl1.bin.hardkernel:
 $(PRODUCT_OUT)/u-boot.bin: bootable/uboot/build/u-boot-orig.bin
 	cp -a bootable/uboot/sd_fuse/u-boot.bin $@
 
+$(PRODUCT_OUT)/sd_fusing.sh:
+	cp -a bootable/uboot/sd_fuse/sd_fusing.sh $@
+
 #
 # Update image : update.zip
 #
@@ -89,6 +92,7 @@ $(PRODUCT_OUT)/selfinstall-$(TARGET_DEVICE).bin: \
 	$(INSTALLED_RECOVERYIMAGE_TARGET) \
 	$(PRODUCT_OUT)/bl1.bin.hardkernel \
 	$(PRODUCT_OUT)/u-boot.bin \
+	$(PRODUCT_OUT)/sd_fusing.sh \
 	$(SELFINSTALL_CACHE_IMAGE)
 	@echo "Creating installable single image file..."
 	dd if=$(PRODUCT_OUT)/bl1.bin.hardkernel of=$@ bs=1 count=442
