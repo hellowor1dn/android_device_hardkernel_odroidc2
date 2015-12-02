@@ -17,4 +17,3 @@
 
 /devices/*dwc2_*/usb?/*/host*/target*/block/sd* auto    auto    defaults    voldmanaged=udisk0:auto
 /devices/*dwc2_*/usb?/*/host*/target*/block/sd* auto    auto    defaults    voldmanaged=udisk1:auto
-/dev/block/loop                                 auto    loop    defaults    voldmanaged=loop:auto
