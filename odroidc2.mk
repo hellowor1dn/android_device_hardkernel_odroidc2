@@ -48,7 +48,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 WITH_LIBPLAYER_MODULE := false
 
 PRODUCT_COPY_FILES += \
-    device/hardkernel/odroidc2/fstab.odroidc2:root/fstab.odroidc2
+    device/hardkernel/odroidc2/fstab.odroidc2:root/fstab.odroidc2 \
+    device/hardkernel/odroidc2/fstab.odroidc2.sdboot:root/fstab.odroidc2.sdboot
 
 #-----------------------------------------------------------------------------
 # WiFi
