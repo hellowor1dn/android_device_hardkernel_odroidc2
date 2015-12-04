@@ -10,8 +10,10 @@ setenv consoleopt "console=ttyS0,115200"
 setenv androidopt "androidboot.hardware=odroidc2 androidboot.serialno=${fbt_id#}"
 setenv logoopt "osd1,loaded,${fb_addr},${hdmimode}
 setenv selinuxopt "androidboot.selinux=disabled"
+# CEC Configuration
+setenv cecconfig "cecf"
 
-setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} logo=${logoopt} ${androidopt} ${selinuxopt}"
+setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} logo=${logoopt} ${androidopt} ${selinuxopt}"
 
 showlogo ${hdmimode}
 
