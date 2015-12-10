@@ -17,3 +17,4 @@ LOCAL_PATH := $(call my-dir)
 include device/hardkernel/odroidc2/Kernel.mk
 include device/hardkernel/odroidc2/rootsystem.mk
 include device/hardkernel/odroidc2/selfinstall.mk
+include device/hardkernel/odroidc2/updatepackage.mk
