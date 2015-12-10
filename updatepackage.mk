@@ -10,7 +10,7 @@ $(PRODUCT_OUT)/updatepackage.zip: $(PRODUCT_OUT)/kernel rootsystem
 	rm -rf $@
 	rm -rf $(PKGDIR)
 	mkdir -p $(PKGDIR)/META-INF/com/google/android
-	cp -a $(PRODUCT_OUT)/kernel $(PKGDIR)
+	cp -a $(PRODUCT_OUT)/obj/KERNEL_OBJ/arch/arm64/boot/Image $(PKGDIR)
 	cp -a $(PRODUCT_OUT)/meson64_odroidc2.dtb $(PKGDIR)
 	cp -a $(PRODUCT_OUT)/u-boot.bin $(PKGDIR)
 	cp -a $(PRODUCT_OUT)/rootsystem.img $(PKGDIR)
