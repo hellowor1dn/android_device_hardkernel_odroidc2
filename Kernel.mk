@@ -15,7 +15,7 @@ KERNEL_MODULES_INSTALL := system
 KERNEL_MODULES_OUT := $(TARGET_OUT)/lib/modules
 BOARD_MKBOOTIMG_ARGS := --second $(PRODUCT_OUT)/$(KERNEL_DEVICETREE).dtb
 
-PREFIX_CROSS_COMPILE=aarch64-linux-gnu-
+PREFIX_CROSS_COMPILE=$(CROSS_COMPILE)
 
 define cp-modules
 	mkdir -p $(PRODUCT_OUT)/root/boot
