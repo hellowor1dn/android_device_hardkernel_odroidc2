@@ -13,7 +13,13 @@ setenv selinuxopt "androidboot.selinux=disabled"
 # CEC Configuration
 setenv cecconfig "cecf"
 
-setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} logo=${logoopt} ${androidopt} ${selinuxopt}"
+# HDMI/DVI Mode Configuration
+# This will enforce the signal type of display
+# "hdmi" - For HDMI interface
+# "dvi" - For DVI interface
+setenv vout_mode "hdmi"
+
+setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} vout=${vout_mode} logo=${logoopt} ${androidopt} ${selinuxopt}"
 
 showlogo ${hdmimode}
 
