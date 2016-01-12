@@ -8,7 +8,7 @@ setenv hdmimode "720p60hz"
 setenv rootopt "root=/dev/mmcblk0p3 rw init=/init rootwait"
 setenv consoleopt "console=ttyS0,115200"
 setenv androidopt "androidboot.hardware=odroidc2 androidboot.serialno=${fbt_id#}"
-setenv logoopt "osd1,loaded,${fb_addr},${hdmimode}
+setenv logoopt "osd1,loaded,${fb_addr},${hdmimode}"
 setenv selinuxopt "androidboot.selinux=disabled"
 # CEC Configuration
 setenv cecconfig "cecf"
@@ -19,7 +19,14 @@ setenv cecconfig "cecf"
 # "dvi" - For DVI interface
 setenv vout_mode "hdmi"
 
-setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} vout=${vout_mode} logo=${logoopt} ${androidopt} ${selinuxopt}"
+# Overscan offset configuration
+# All offsets are zero and can be tuned by manual or ODROID Utility
+setenv top "0"
+setenv left "0"
+setenv bottom "0"
+setenv right "0"
+
+setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} vout=${vout_mode} overscan_top=${top} overscan_left=${left} overscan_bottom=${bottom} overscan_right=${right} logo=${logoopt} ${androidopt} ${selinuxopt}"
 
 showlogo ${hdmimode}
 
