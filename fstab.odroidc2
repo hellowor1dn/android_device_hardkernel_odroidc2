@@ -9,7 +9,7 @@
 
 # When booted by eMMC card
 /devices/*.emmc/mmc_host/emmc*             auto    vfat    defaults    voldmanaged=internal:1,noemulatedsd
-/devices/*.sd/mmc_host/sd*                auto    auto    defaults    voldmanaged=sdcard:auto
+/devices/*.sd/mmc_host/sd*                auto    auto    defaults    voldmanaged=sdcard1:auto
 
 /devices/*dwc2_*/usb?/*/host*/target*/block/sd* auto    auto    defaults    voldmanaged=udisk0:auto
 /devices/*dwc2_*/usb?/*/host*/target*/block/sd* auto    auto    defaults    voldmanaged=udisk1:auto
