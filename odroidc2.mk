@@ -94,7 +94,11 @@ PRODUCT_COPY_FILES += \
 	device/hardkernel/$(TARGET_PRODUCT)/wifi/rt2870.bin:root/lib/firmware/rt2870.bin \
 	device/hardkernel/$(TARGET_PRODUCT)/wifi/RT2870STA.dat:system/etc/Wireless/RT2870STA/RT2870STA.dat
 
-PRODUCT_PACKAGES += libbt-vendor
+BOARD_HAVE_BLUETOOTH := true
+BLUETOOTH_HCI_USE_USB := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := true
+include device/hardkernel/common/bluetooth.mk
 
 # Device specific system feature description
 PRODUCT_COPY_FILES += \
@@ -105,8 +109,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
-    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
+    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml
@@ -160,5 +163,6 @@ PRODUCT_PACKAGES += \
 	Utility \
 	updater \
 	su
+
 # inherit from the non-open-source side, if present
 $(call inherit-product-if-exists, device/hardkernel/proprietary/proprietary.mk)
