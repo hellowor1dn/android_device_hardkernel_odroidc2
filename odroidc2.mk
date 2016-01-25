@@ -159,6 +159,9 @@ BUILD_WITH_LOWMEM_COMMON_CONFIG := true
 
 BOARD_USES_USB_PM := true
 
+WITH_DEXPREOPT := true
+WITH_DEXPREOPT_PIC := true
+
 PRODUCT_PACKAGES += \
 	Utility \
 	updater \
