@@ -133,6 +133,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/files/hardkernel-720.bmp.gz:$(PRODUCT_OUT)/hardkernel-720.bmp.gz
 
+#DRM Widevine
+BOARD_WIDEVINE_OEMCRYPTO_LEVEL := 3
 
 $(call inherit-product, device/hardkernel/common/media.mk)
 
