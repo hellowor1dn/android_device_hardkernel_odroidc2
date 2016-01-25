@@ -162,6 +162,7 @@ BOARD_USES_USB_PM := true
 PRODUCT_PACKAGES += \
 	Utility \
 	updater \
+	Superuser \
 	su
 
 # inherit from the non-open-source side, if present
