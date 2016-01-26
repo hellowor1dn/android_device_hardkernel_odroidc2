@@ -24,12 +24,12 @@ run_program("/bin/dd", "if=/tmp/u-boot.bin", "of=/dev/block/mmcblk0", "seek=97")
 set_progress(0.4000);
 
 ui_print("   'system' partition is flashing...");
-write_sparse_image("rootsystem.img", "system", "/dev/block/mmcblk0p3");
+write_sparse_image("rootsystem.img", "system", "/dev/block/mmcblk0p2");
 
 set_progress(0.8000);
 
 ui_print("   boot.ini.template is copying to /system/etc/");
-mount("ext4", "EMMC", "/dev/block/mmcblk0p3", "/system");
+mount("ext4", "EMMC", "/dev/block/mmcblk0p2", "/system");
 package_extract_file("system/etc/boot.ini.template", "/system/etc/boot.ini.template");
 unmount("/system");
 
