@@ -170,7 +170,8 @@ PRODUCT_PACKAGES += \
 	Utility \
 	updater \
 	Superuser \
-	su
+	su \
+	TvSettings
 
 # inherit from the non-open-source side, if present
 $(call inherit-product-if-exists, device/hardkernel/proprietary/proprietary.mk)
