@@ -1,4 +1,5 @@
 148f 5572 rt2800usb /system/etc/modprobe.d/rt2800usb
+148f 5370 rt2800usb /system/etc/modprobe.d/rt2800usb
 0bda 8176 rtl8192cu /system/etc/modprobe.d/rtl8192cu /* 8188cu 1*1 dongole */
 0bda 8170 rtl8192cu /system/etc/modprobe.d/rtl8192cu /* 8188CE-VAU USB minCard */
 0bda 817e rtl8192cu /system/etc/modprobe.d/rtl8192cu /* 8188CE-VAU USB minCard */
