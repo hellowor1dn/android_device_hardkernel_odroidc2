@@ -90,6 +90,10 @@ TARGET_USE_BLOCK_BASE_UPGRADE := true
 #TARGET_RECOVERY_DISABLE_ADB_SIDELOAD := true
 
 BOARD_HAVE_BLUETOOTH_BCM := true
+# GPS
+BOARD_HAVE_ODROID_GPS := true
+BOARD_SUPPORT_EXTERNAL_GPS := true
+
 include device/hardkernel/common/sepolicy.mk
 include device/hardkernel/common/gpu/mali450-user-$(TARGET_ARCH).mk
 #MALLOC_IMPL := dlmalloc
