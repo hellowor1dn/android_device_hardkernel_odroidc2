@@ -83,4 +83,8 @@ BOARD_USES_ALSA_AUDIO := true
 TARGET_RELEASETOOLS_EXTENSIONS := device/hardkernel/common
 TARGET_USE_BLOCK_BASE_UPGRADE := true
 
+# GPS
+BOARD_HAVE_ODROID_GPS := true
+BOARD_SUPPORT_EXTERNAL_GPS := true
+
 include device/hardkernel/common/sepolicy.mk
