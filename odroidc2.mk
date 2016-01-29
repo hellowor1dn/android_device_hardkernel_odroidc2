@@ -245,4 +245,15 @@ TARGET_BUILD_CTS:= true
 TARGET_BUILD_GOOGLE_ATV:= false
 TARGET_BUILD_NETFLIX:= false
 include device/hardkernel/common/software.mk
+# ODROID USBIO-SENSOR
+BOARD_HAVE_ODROID_SENSOR := true
+
+# odroid sensor
+PRODUCT_PACKAGES += \
+	sensors.odroidc2
+
+PRODUCT_COPY_FILES += \
+	frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml
+
+# inherit from the non-open-source side, if present
 $(call inherit-product-if-exists, device/hardkernel/proprietary/proprietary.mk)
