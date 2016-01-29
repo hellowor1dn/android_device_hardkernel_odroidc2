@@ -173,5 +173,15 @@ PRODUCT_PACKAGES += \
 	su \
 	TvSettings
 
+# ODROID USBIO-SENSOR
+BOARD_HAVE_ODROID_SENSOR := true
+
+# odroid sensor
+PRODUCT_PACKAGES += \
+	sensors.odroidc2
+
+PRODUCT_COPY_FILES += \
+	frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml
+
 # inherit from the non-open-source side, if present
 $(call inherit-product-if-exists, device/hardkernel/proprietary/proprietary.mk)
