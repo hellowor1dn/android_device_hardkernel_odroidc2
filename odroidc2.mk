@@ -170,8 +170,7 @@ PRODUCT_PACKAGES += \
 	Utility \
 	updater \
 	Superuser \
-	su \
-	TvSettings
+	su
 
 # ODROID USBIO-SENSOR
 BOARD_HAVE_ODROID_SENSOR := true
