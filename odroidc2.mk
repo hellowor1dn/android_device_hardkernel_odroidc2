@@ -33,7 +33,7 @@ endif
 $(call inherit-product, device/hardkernel/common/products/mbox/product_mbox.mk)
 $(call inherit-product, device/hardkernel/odroidc2/device.mk)
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
 # ODROID-C2:
 PRODUCT_MANUFACTURER := HardKernel Co., Ltd.
