@@ -167,6 +167,7 @@ WITH_DEXPREOPT := true
 WITH_DEXPREOPT_PIC := true
 
 PRODUCT_PACKAGES += \
+	Development \
 	Utility \
 	updater \
 	Superuser \
