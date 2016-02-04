@@ -33,7 +33,7 @@ endif
 $(call inherit-product, device/hardkernel/common/products/mbox/product_mbox.mk)
 $(call inherit-product, device/hardkernel/odroidc2/device.mk)
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_base.mk)
 
 # ODROID-C2:
 PRODUCT_MANUFACTURER := HardKernel Co., Ltd.
@@ -187,6 +187,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
 	gps.odroidc2
 
+PRODUCT_PACKAGES += \
+    DownloadProviderUi
 
 # inherit from the non-open-source side, if present
 $(call inherit-product-if-exists, device/hardkernel/proprietary/proprietary.mk)
