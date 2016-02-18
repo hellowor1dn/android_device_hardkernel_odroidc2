@@ -104,7 +104,7 @@ $(PRODUCT_OUT)/selfinstall-$(TARGET_DEVICE).bin: \
 	dd if=$(INSTALLED_RECOVERYIMAGE_TARGET) of=$@ bs=512 seek=34400
 	dd if=device/hardkernel/$(TARGET_PRODUCT)/files/hardkernel-720.bmp.gz of=$@ \
 		bs=512 seek=58976
-	dd if=$(SELFINSTALL_CACHE_IMAGE) of=$@ bs=512 seek=63072
+	dd if=$(SELFINSTALL_CACHE_IMAGE) of=$@ bs=512 seek=65536
 	sync
 	@echo "Done."
 
