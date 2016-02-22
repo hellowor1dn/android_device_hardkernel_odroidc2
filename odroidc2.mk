@@ -190,5 +190,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     DownloadProviderUi
 
+# U-Boot Env Tools
+PRODUCT_PACKAGES += \
+	fw_printenv \
+	fw_setenv
+
 # inherit from the non-open-source side, if present
 $(call inherit-product-if-exists, device/hardkernel/proprietary/proprietary.mk)
