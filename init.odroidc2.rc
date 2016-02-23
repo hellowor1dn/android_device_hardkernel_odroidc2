@@ -342,6 +342,8 @@ on boot
     write /sys/class/vfm/map "rm default"
     write /sys/class/vfm/map "add default decoder ppmgr deinterlace amvideo"
 
+    write /proc/sys/kernel/ctrl-alt-del 0
+
 on fs
     mount_all /fstab.odroidc2
     setprop ro.crypto.fuse_sdcard true
