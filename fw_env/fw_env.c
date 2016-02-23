@@ -35,8 +35,6 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#define DEBUG
-
 #ifdef MTD_OLD
 # include <stdint.h>
 # include <linux/mtd/mtd.h>
@@ -738,8 +736,8 @@ static int flash_read_buf (int dev, int fd, void *buf, size_t count,
 		 */
 		lseek (fd, blockstart + block_seek, SEEK_SET);
 
-		rc = read (fd, buf + processed, readlen);
-		if (rc != readlen) {
+		rc = read (fd, (char *)buf + processed, readlen);
+		if (rc != (int)readlen) {
 			fprintf (stderr, "Read error on %s: %s\n",
 				 DEVNAME (dev), strerror (errno));
 			return -1;
@@ -786,13 +784,15 @@ static int flash_write_buf (int dev, int fd, void *buf, size_t count,
 
 	blocklen = DEVESIZE (dev);
 
-	top_of_range = ((DEVOFFSET(dev) / blocklen) +
-					ENVSECTORS (dev)) * blocklen;
-fprintf(stderr, "DEVOFFSET=%08x, blocklen=%08x, ENVSECTORS=%08x\n",
-		DEVOFFSET(dev), blocklen, ENVSECTORS(dev));
+	top_of_range = ((DEVOFFSET(dev) / blocklen) + ENVSECTORS(dev)) * blocklen;
 	erase_offset = (offset / blocklen) * blocklen;
-fprintf(stderr, "erase_offset=%08x, offset=%08x, top_of_range=%08x\n",
-		erase_offset, offset, top_of_range);
+
+#ifdef DEBUG
+	fprintf(stderr, "DEVOFFSET=%08lx, blocklen=%08x, ENVSECTORS=%08lx\n",
+			DEVOFFSET(dev), blocklen, ENVSECTORS (dev));
+	fprintf(stderr, "erase_offset=%08x, offset=%08x, top_of_range=%08x\n",
+			(unsigned int)erase_offset, (unsigned int)offset, (unsigned int)top_of_range);
+#endif
 
 	/* Maximum area we may use */
 	erase_len = top_of_range - erase_offset;
@@ -807,7 +807,7 @@ fprintf(stderr, "erase_offset=%08x, offset=%08x, top_of_range=%08x\n",
 	 * end of the block
 	 */
 	write_total = ((block_seek + count + blocklen - 1) /
-						blocklen) * blocklen;
+			blocklen) * blocklen;
 
 	/*
 	 * Support data anywhere within erase sectors: read out the complete
@@ -818,18 +818,18 @@ fprintf(stderr, "erase_offset=%08x, offset=%08x, top_of_range=%08x\n",
 		data = malloc (erase_len);
 		if (!data) {
 			fprintf (stderr,
-				 "Cannot malloc %zu bytes: %s\n",
-				 erase_len, strerror (errno));
+					"Cannot malloc %zu bytes: %s\n",
+					erase_len, strerror (errno));
 			return -1;
 		}
 
 		rc = flash_read_buf (dev, fd, data, write_total, erase_offset,
-				     mtd_type);
-		if (write_total != rc)
+				mtd_type);
+		if ((int)write_total != rc)
 			return -1;
 
 		/* Overwrite the old environment */
-		memcpy (data + block_seek, buf, count);
+		memcpy ((char *)data + block_seek, buf, count);
 	} else {
 		/*
 		 * We get here, iff offset is block-aligned and count is a
@@ -855,9 +855,11 @@ fprintf(stderr, "erase_offset=%08x, offset=%08x, top_of_range=%08x\n",
 		rc = flash_bad_block (fd, mtd_type, &blockstart);
 		if (rc < 0)		/* block test failed */
 			return rc;
-fprintf(stderr, "blockstart = %08x, erasesize = %08x, top_of_range = %08x\n",
-		blockstart, erasesize, top_of_range);
-		if (blockstart + erasesize > top_of_range) {
+#ifdef DEBUG
+		fprintf(stderr, "blockstart = %08x, erasesize = %08x, top_of_range = %08x\n",
+				(unsigned int)blockstart, erasesize, (unsigned int)top_of_range);
+#endif
+		if (blockstart + blocklen> top_of_range) {
 			fprintf (stderr, "End of range reached, aborting\n");
 			return -1;
 		}
@@ -874,24 +876,24 @@ fprintf(stderr, "blockstart = %08x, erasesize = %08x, top_of_range = %08x\n",
 		if (mtd_type != MTD_DATAFLASH)
 			if (ioctl (fd, MEMERASE, &erase) != 0) {
 				fprintf (stderr, "MTD erase error on %s: %s\n",
-					 DEVNAME (dev),
-					 strerror (errno));
+						DEVNAME (dev),
+						strerror (errno));
 				return -1;
 			}
 
 		if (lseek (fd, blockstart, SEEK_SET) == -1) {
 			fprintf (stderr,
-				 "Seek error on %s: %s\n",
-				 DEVNAME (dev), strerror (errno));
+					"Seek error on %s: %s\n",
+					DEVNAME (dev), strerror (errno));
 			return -1;
 		}
-
 #ifdef DEBUG
-		printf ("Write 0x%x bytes at 0x%llx\n", erasesize, blockstart);
+		printf ("Write 0x%x bytes at 0x%llx\n", blocklen, blockstart);
 #endif
-		if (write (fd, data + processed, erasesize) != erasesize) {
+
+		if (write (fd, (char *)data + processed, blocklen) != (int)blocklen) {
 			fprintf (stderr, "Write error on %s: %s\n",
-				 DEVNAME (dev), strerror (errno));
+					DEVNAME (dev), strerror (errno));
 			return -1;
 		}
 
@@ -1000,7 +1002,7 @@ static int flash_read (int fd)
 	rc = flash_read_buf (dev_current, fd, environment.image, CONFIG_ENV_SIZE,
 			     DEVOFFSET (dev_current), mtdinfo.type);
 
-	return (rc != CONFIG_ENV_SIZE) ? -1 : 0;
+	return ((unsigned int)rc != CONFIG_ENV_SIZE) ? -1 : 0;
 }
 
 static int flash_io (int mode)
@@ -1083,11 +1085,11 @@ static char *envmatch (char * s1, char * s2)
  */
 int fw_env_open(void)
 {
-	int crc0, crc0_ok;
+	unsigned int crc0, crc0_ok;
 	unsigned char flag0;
 	void *addr0;
 
-	int crc1, crc1_ok;
+	unsigned int crc1, crc1_ok;
 	unsigned char flag1;
 	void *addr1;
 
