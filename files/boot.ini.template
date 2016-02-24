@@ -19,12 +19,12 @@ setenv vout_mode "hdmi"
 
 # Overscan offset configuration
 # All offsets are zero and can be tuned by manual or ODROID Utility
-setenv top "0"
-setenv left "0"
-setenv bottom "0"
-setenv right "0"
+setenv overscan_top "0"
+setenv overscan_left "0"
+setenv overscan_bottom "0"
+setenv overscan_right "0"
 
-setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} vout=${vout_mode} overscan_top=${top} overscan_left=${left} overscan_bottom=${bottom} overscan_right=${right} logo=${logoopt} ${androidopt} ${selinuxopt}"
+setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} vout=${vout_mode} overscan_top=${overscan_top} overscan_left=${overscan_left} overscan_bottom=${overscan_bottom} overscan_right=${overscan_right} logo=${logoopt} ${androidopt} ${selinuxopt}"
 save
 
 showlogo ${hdmimode}
