@@ -10,8 +10,6 @@ setenv consoleopt "console=ttyS0,115200"
 setenv androidopt "androidboot.hardware=odroidc2 androidboot.serialno=${fbt_id#}"
 setenv logoopt "osd1,loaded,${fb_addr},${hdmimode}"
 setenv selinuxopt "androidboot.selinux=disabled"
-# CEC Configuration
-setenv cecconfig "cecf"
 
 # HDMI/DVI Mode Configuration
 # This will enforce the signal type of display
@@ -27,6 +25,7 @@ setenv bottom "0"
 setenv right "0"
 
 setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} vout=${vout_mode} overscan_top=${top} overscan_left=${left} overscan_bottom=${bottom} overscan_right=${right} logo=${logoopt} ${androidopt} ${selinuxopt}"
+save
 
 showlogo ${hdmimode}
 
