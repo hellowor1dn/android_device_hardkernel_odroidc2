@@ -24,7 +24,7 @@ setenv overscan_left "0"
 setenv overscan_bottom "0"
 setenv overscan_right "0"
 
-setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} vout=${vout_mode} overscan_top=${overscan_top} overscan_left=${overscan_left} overscan_bottom=${overscan_bottom} overscan_right=${overscan_right} logo=${logoopt} ${androidopt} ${selinuxopt}"
+setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} vout=${vout_mode} logo=${logoopt} ${androidopt} ${selinuxopt}"
 save
 
 showlogo ${hdmimode}
