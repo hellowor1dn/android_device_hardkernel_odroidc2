@@ -56,12 +56,13 @@ service wpa_supplicant /system/bin/wpa_supplicant \
 #    disabled
 #    oneshot
 
-on property:init.svc.bootanim=stopped
+on property:sys.boot_completed=1
     start preinstall
 
 service preinstall /system/bin/preinstall.sh
     user root
     group root
+    disabled
     oneshot
 
 # su daemon$
