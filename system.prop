@@ -61,3 +61,5 @@ persist.demo.hdmirotation=landscape
 
 #set to 0 temporarily so touch works without other changes
 ro.sf,hwrotation=0
+
+ro.sf.lcd_density=160
