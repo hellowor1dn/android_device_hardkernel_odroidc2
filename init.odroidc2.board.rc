@@ -71,3 +71,9 @@ service su_daemon /system/xbin/su --daemon
     user root
     group root
     oneshot
+
+service auto_density /system/bin/set_density.sh
+    class main
+    user root
+    group root
+    oneshot

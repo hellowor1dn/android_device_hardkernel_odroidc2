@@ -31,6 +31,7 @@ PRODUCT_COPY_FILES += \
     device/hardkernel/odroidc2/files/mesondisplay.cfg:system/etc/mesondisplay.cfg \
     device/hardkernel/odroidc2/files/boot.ini.template:system/etc/boot.ini.template \
     device/hardkernel/odroidc2/files/preinstall.sh:system/bin/preinstall.sh \
+    device/hardkernel/odroidc2/files/set_density.sh:system/bin/set_density.sh \
     device/hardkernel/odroidc2/files/hardkernel-720.bmp.gz:system/etc/hardkernel-720.bmp.gz
 
 # remote IME config file
