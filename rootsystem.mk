@@ -23,17 +23,13 @@ $(PRODUCT_OUT)/rootsystem: droidcore
 	echo combine the directories system/ and root/ into rootsystem/.
 	rm -rf $@ && mkdir -p $@
 	cp -arp $(PRODUCT_OUT)/root/* $@
-	cp -arp $(PRODUCT_OUT)/system $@
-	mv $(PRODUCT_OUT)/rootsystem/system/bin $(PRODUCT_OUT)/rootsystem/
-	mv $(PRODUCT_OUT)/rootsystem/system/xbin $(PRODUCT_OUT)/rootsystem/
+	cp -arp $(PRODUCT_OUT)/system/* $@
 	mv $(PRODUCT_OUT)/rootsystem/init $(PRODUCT_OUT)/rootsystem/bin/
 	mv $(PRODUCT_OUT)/rootsystem/sbin/healthd $(PRODUCT_OUT)/rootsystem/bin/
 	mv $(PRODUCT_OUT)/rootsystem/sbin/adbd $(PRODUCT_OUT)/rootsystem/bin/
 	ln -sf /bin/init $(PRODUCT_OUT)/rootsystem/init
 	ln -sf /bin/healthd $(PRODUCT_OUT)/rootsystem/sbin/healthd
 	ln -sf /bin/adbd $(PRODUCT_OUT)/rootsystem/sbin/adbd
-	ln -s /bin $(PRODUCT_OUT)/rootsystem/system/bin
-	ln -s /xbin $(PRODUCT_OUT)/rootsystem/system/xbin
 	sed -i "s,^ro.secure=*,ro.secure=0,g" $(PRODUCT_OUT)/rootsystem/default.prop
 #	mkdir -p $(PRODUCT_OUT)/rootsystem/cache
 #	mkdir -p $(PRODUCT_OUT)/rootsystem/mnt/shell/emulated
