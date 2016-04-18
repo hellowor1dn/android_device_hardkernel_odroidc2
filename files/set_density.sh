@@ -76,7 +76,7 @@ do
 					break
 			elif [ "$SIZE" == "Physical size: 1920x1080" ]; then
 				if [ "$retval" == 1 ]; then
-					wm density 180
+					wm density 160
 				else
 					wm density 260
 				fi
