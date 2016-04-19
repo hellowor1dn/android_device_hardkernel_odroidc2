@@ -77,3 +77,13 @@ service auto_density /system/bin/set_density.sh
     user root
     group root
     oneshot
+
+service rtc_daemon /system/bin/rtc_sync.sh
+    class main
+    user root
+    group root
+    diabled
+    oneshot
+
+on property:sys.boot_completed=1
+    start rtc_daemon
