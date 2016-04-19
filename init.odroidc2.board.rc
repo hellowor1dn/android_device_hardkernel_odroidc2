@@ -87,3 +87,10 @@ service rtc_daemon /system/bin/rtc_sync.sh
 
 on property:sys.boot_completed=1
     start rtc_daemon
+
+service ups /system/bin/ups3.sh
+    class core
+    user root
+    group root
+    disabled
+    oneshot
