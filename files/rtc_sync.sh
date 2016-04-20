@@ -15,7 +15,7 @@ do
 
 	RESULT=`hwclock -r`
 	echo $RESULT
-	if [ `echo $RESULT | grep -c "No such file or directory"`-gt 0 ]; then
+	if [ `echo $RESULT | grep -c "No such file or directory"` -gt 0 ]; then
 		rmmod rtc_pcf8563
 		break
 	fi
@@ -27,16 +27,16 @@ do
 		echo "Set system time from hardware clock"
 	fi
 
-	RESULT=`getprop | grep dhcp.wlan0.result`
+	RESULT=`getprop dhcp.wlan0.result`
 	echo $RESULT
-	if [ `echo $RESULT | grep -c "ok"` -gt 0 ]; then
+	if [ "$RESULT" == "ok" ]; then
 		echo "connected wifi"
 		echo "Set hardware clock from system time"
 		hwclock -w
 	else
-		RESULT=`getprop | grep dhcp.eth0.result`
+		RESULT=`getprop dhcp.eth0.result`
 		echo $RESULT
-		if [ `echo $RESULT | grep -c "ok"` -gt 0 ]; then
+		if [ "$RESULT" == "ok" ]; then
 			echo "connected ethernet"
 			echo "Set hardware clock from system time"
 			hwclock -w
