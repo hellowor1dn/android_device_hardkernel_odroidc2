@@ -18,6 +18,9 @@ do
 	if [ `echo $RESULT | grep -c "No such file or directory"` -gt 0 ]; then
 		rmmod rtc_pcf8563
 		break
+	elif [ "$RESULT" == "" ]; then
+		rmmod rtc_pcf8563
+		break
 	fi
 
 	DATE=`date`
