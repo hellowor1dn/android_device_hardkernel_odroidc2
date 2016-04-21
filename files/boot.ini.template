@@ -51,6 +51,9 @@ setenv selinuxopt "androidboot.selinux=disabled"
 # "dvi" - For DVI interface
 setenv vout_mode "hdmi"
 
+# HPD enable/disable option
+setenv disablehpd "false"
+
 # Overscan offset configuration
 # All offsets are zero and can be tuned by manual or ODROID Utility
 setenv overscan_top "0"
@@ -58,7 +61,7 @@ setenv overscan_left "0"
 setenv overscan_bottom "0"
 setenv overscan_right "0"
 
-setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} vout=${vout_mode} logo=${logoopt} ${androidopt} ${selinuxopt}"
+setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} vout=${vout_mode} disablehpd=${disablehpd} logo=${logoopt} ${androidopt} ${selinuxopt}"
 save
 
 showlogo ${hdmimode}
