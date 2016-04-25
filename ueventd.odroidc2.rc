@@ -84,3 +84,6 @@
 # GPS
 /dev/ttyACM*   0666    gps             gps
 /dev/ttyUSB*   0666    gps             gps
+
+# i2c userland driver
+/dev/i2c-*                0666    system    system
