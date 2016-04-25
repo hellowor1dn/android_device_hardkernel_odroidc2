@@ -85,3 +85,6 @@
 
 # bluetooth device
 /dev/bus/usb/001/*        0660    bluetooth bluetooth
+
+# i2c userland driver
+/dev/i2c-*                0666    system    system
