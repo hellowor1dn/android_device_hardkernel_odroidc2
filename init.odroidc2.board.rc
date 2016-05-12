@@ -100,3 +100,23 @@ service makebootini /system/bin/makebootini.sh
     user root
     group root
     oneshot
+
+service multitouch /system/bin/insmod /system/lib/modules/hid-multitouch.ko
+    class core
+    user root
+    group root
+    disabled
+    oneshot
+
+service dwav_mt /system/bin/insmod /system/lib/modules/dwav-usb-mt.ko
+    class core
+    user root
+    group root
+    disabled
+    oneshot
+
+on property:dev.bootcomplete=1
+    start multitouch
+
+on property:init.svc.multitouch=stopped
+    start dwav_mt
