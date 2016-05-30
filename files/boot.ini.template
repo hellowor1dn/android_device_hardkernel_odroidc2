@@ -37,6 +37,9 @@ setenv loadaddr 0x20000000
 #    "1600x900p60hz"    | 1600x900 Progressive 60Hz
 #    "1680x1050p60hz"   | 1680x1050 Progressive 60Hz
 #    "1920x1200p60hz"   | 1920x1200 Progressive 60Hz
+#    "2560x1080p60hz"   | 2560x1080 Progressive 60Hz
+#    "2560x1440p60hz"   | 2560x1440 Progressive 60Hz
+#    "2560x1600p60hz"   | 2560x1600 Progressive 60Hz
 setenv hdmimode "720p60hz"
 
 setenv rootopt "root=/dev/mmcblk0p2 rw init=/init rootwait"
