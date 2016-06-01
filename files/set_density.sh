@@ -1,13 +1,13 @@
 #!/bin/sh
 
-sleep 5
+sleep 3
 SIZE="Error type 2"
 
 function get_orientation()
 {
-	ORIENTATION=`getprop | grep persist.demo.hdmirotation`
+	ORIENTATION=`getprop persist.demo.hdmirotation`
 	echo $ORIENTATION
-	if [ "$ORIENTATION" == "[persist.demo.hdmirotation]: [landscape]" ]; then
+	if [ "$ORIENTATION" == "landscape" ]; then
 		retval=1
 	else
 		retval=0
@@ -19,11 +19,11 @@ do
 	case $SIZE in
 		Error*)
 			echo "wm not ready"
-			sleep 1
 			SIZE=`wm size`
 			if [ "$SIZE" == "" ]; then
 				SIZE="Error type 2"
 			fi
+			sleep 1
 			get_orientation
 		;;
 		Physical*)
@@ -75,6 +75,27 @@ do
 				fi
 					break
 			elif [ "$SIZE" == "Physical size: 1920x1080" ]; then
+				if [ "$retval" == 1 ]; then
+					wm density 160
+				else
+					wm density 260
+				fi
+				break
+			elif [ "$SIZE" == "Physical size: 2560x1080" ]; then
+				if [ "$retval" == 1 ]; then
+					wm density 160
+				else
+					wm density 260
+				fi
+				break
+			elif [ "$SIZE" == "Physical size: 2560x1440" ]; then
+				if [ "$retval" == 1 ]; then
+					wm density 160
+				else
+					wm density 260
+				fi
+				break
+			elif [ "$SIZE" == "Physical size: 2560x1600" ]; then
 				if [ "$retval" == 1 ]; then
 					wm density 160
 				else
