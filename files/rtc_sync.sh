@@ -25,7 +25,9 @@ do
 
 	DATE=`date`
 	echo $DATE
-	if [ `echo $DATE | grep -c " 1970"` -gt 0 ]; then
+	YEAR=`echo $DATE | cut -d ' ' -f6`
+	echo $YEAR
+	if [ "$YEAR" == "1969" ] || [ "$YEAR" == "1970" ]; then
 		hwclock -s
 		echo "Set system time from hardware clock"
 	fi
