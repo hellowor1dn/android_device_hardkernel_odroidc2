@@ -68,6 +68,7 @@ setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfi
 save
 
 showlogo ${hdmimode}
+#usb pwren
 
 movi read dtb 0 ${dtbaddr}
 movi read boot 0 ${loadaddr}
