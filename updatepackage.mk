@@ -6,7 +6,7 @@ SIGNJAR:=prebuilts/sdk/tools/lib/signapk.jar
 #
 PKGDIR=$(PRODUCT_OUT)/updatepackage
 
-$(PRODUCT_OUT)/updatepackage.zip: $(PRODUCT_OUT)/kernel rootsystem
+$(PRODUCT_OUT)/updatepackage.zip: $(PRODUCT_OUT)/kernel rootsystem recovery
 	rm -rf $@
 	rm -rf $(PKGDIR)
 	mkdir -p $(PKGDIR)/META-INF/com/google/android
@@ -14,6 +14,7 @@ $(PRODUCT_OUT)/updatepackage.zip: $(PRODUCT_OUT)/kernel rootsystem
 	cp -a $(PRODUCT_OUT)/meson64_odroidc2.dtb $(PKGDIR)
 	cp -a $(PRODUCT_OUT)/u-boot.bin $(PKGDIR)
 	cp -a $(PRODUCT_OUT)/rootsystem.img $(PKGDIR)
+	cp -a $(PRODUCT_OUT)/recovery.img $(PKGDIR)
 	mkdir $(PKGDIR)/system/etc -p
 	cp -a $(PRODUCT_OUT)/system/etc/boot.ini.template $(PKGDIR)/system/etc/
 	cp -a $(PRODUCT_OUT)/system/bin/updater \
