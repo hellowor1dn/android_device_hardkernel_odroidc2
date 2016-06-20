@@ -85,9 +85,6 @@ service rtc_daemon /system/bin/rtc_sync.sh
     diabled
     oneshot
 
-on property:sys.boot_completed=1
-    start rtc_daemon
-
 service ups /system/bin/ups3.sh
     class core
     user root
@@ -110,3 +107,6 @@ service usb_reset /system/bin/usb_reset.sh
 
 on property:dev.bootcomplete=1
     start usb_reset
+
+on property:init.svc.usb_reset=stopped
+    start rtc_daemon
