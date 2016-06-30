@@ -85,4 +85,11 @@ elif [ "$SIZE" == "Physical size: 2560x1600" ]; then
 		wm density 260
 	fi
 	break
+elif [ "$SIZE" == "Physical size: 3440x1440" ]; then
+	if [ "$retval" == 1 ]; then
+		wm density 160
+	else
+		wm density 260
+	fi
+	break
 fi
