@@ -63,8 +63,10 @@ setenv overscan_top "0"
 setenv overscan_left "0"
 setenv overscan_bottom "0"
 setenv overscan_right "0"
+suspend_hdmiphy=0
 
-setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} vout=${vout_mode} disablehpd=${disablehpd} logo=${logoopt} ${androidopt} ${selinuxopt}"
+setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} vout=${vout_mode} disablehpd=${disablehpd} logo=${logoopt} ${androidopt} ${selinuxopt} suspend_hdmiphy=${suspend_hdmiphy}"
+
 save
 
 showlogo ${hdmimode}
