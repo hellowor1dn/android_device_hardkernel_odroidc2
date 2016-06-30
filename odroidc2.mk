@@ -131,7 +131,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/files/hardkernel-1080.bmp.gz:$(PRODUCT_OUT)/hardkernel-1080.bmp.gz
+	$(LOCAL_PATH)/files/hardkernel-720.bmp.gz:$(PRODUCT_OUT)/hardkernel-720.bmp.gz
 
 #DRM Widevine
 BOARD_WIDEVINE_OEMCRYPTO_LEVEL := 3
