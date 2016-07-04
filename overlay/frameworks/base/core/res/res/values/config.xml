@@ -75,10 +75,6 @@
          available on *any* device with a telephony radio, even if the
          device is data-only. -->
     <bool name="config_voice_capable">false</bool>
-    <!-- Flag indicating that this device does not rotate and will always remain in its default
-         orientation. Activities that desire to run in a non-compatible orientation will be run
-         from an emulated display within the physical display. -->
-    <bool name="config_forceDefaultOrientation">true</bool>
 
     <!-- Enable overlay for all location components. -->
     <bool name="config_enableNetworkLocationOverlay" translatable="false">true</bool>
