@@ -82,7 +82,7 @@ service rtc_daemon /system/bin/rtc_sync.sh
     class main
     user root
     group root
-    diabled
+    disabled
     oneshot
 
 service ups /system/bin/ups3.sh
