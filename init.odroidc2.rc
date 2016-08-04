@@ -443,37 +443,5 @@ service usbpm /system/bin/usbtestpm
     group system
     disabled
 
-service imageserver /system/bin/imageserver
-    class main
-    user root
-    group system
-    seclabel u:r:imageserver:s0
-
-service dig /system/bin/dig
-    class main
-    user root
-    group system
-    seclabel u:r:dig:s0
-
-service bootvideo /system/bin/bootplayer /system/etc/bootvideo
-    class main
-    user root
-    group system
-    disabled
-    oneshot
-
-service instaboot /system/bin/instabootserver
-    class core
-    disabled
-    user root
-    group root
-    seclabel u:r:instaboot:s0
-
-on property:config.disable_instaboot=false
-    start instaboot
-
-on property:instaboot.status=completed
-    start remotecfg
-
 on property:dev.bootcomplete=1
     start usbpm
