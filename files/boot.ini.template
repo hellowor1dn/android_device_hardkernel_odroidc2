@@ -65,8 +65,8 @@ setenv overscan_top "0"
 setenv overscan_left "0"
 setenv overscan_bottom "0"
 setenv overscan_right "0"
+setenv led_onoff "on"
 suspend_hdmiphy=0
-led_blink=1
 
 # max cpu frequency in dvfs table / in MHz unit
 # setenv max_freq "2016"  # 2.016GHz
@@ -85,7 +85,7 @@ setenv max_freq "1536"  # 1.536GHz
 # setenv maxcpus "3"
 setenv maxcpus "4"
 
-setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} vout=${vout_mode} disablehpd=${disablehpd} logo=${logoopt} ${androidopt} ${selinuxopt} suspend_hdmiphy=${suspend_hdmiphy} led_blink=${led_blink} max_freq=${max_freq} maxcpus=${maxcpus}"
+setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} vout=${vout_mode} disablehpd=${disablehpd} logo=${logoopt} ${androidopt} ${selinuxopt} suspend_hdmiphy=${suspend_hdmiphy} led_onoff=${led_onoff} max_freq=${max_freq} maxcpus=${maxcpus}"
 
 save
 
