@@ -94,6 +94,9 @@ service.adb.tcp.port=5555
 #netflix
 ro.nrdp.modelgroup=S905
 
+#Bluetooth Audio A2dp Sink
+persist.service.bt.a2dp.sink false
+
 ro.sf.lcd_density=160
 
 config.override_forced_orient=false
