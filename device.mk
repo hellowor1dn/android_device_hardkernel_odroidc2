@@ -37,6 +37,7 @@ PRODUCT_COPY_FILES += \
     device/hardkernel/odroidc2/files/usb_reset.sh:system/bin/usb_reset.sh \
     device/hardkernel/odroidc2/files/rtc_sync.sh:system/bin/rtc_sync.sh \
     device/hardkernel/odroidc2/files/ups3.sh:system/bin/ups3.sh \
+    device/hardkernel/odroidc2/files/rotation.sh:system/bin/rotation.sh \
     device/hardkernel/odroidc2/files/hardkernel-720.bmp.gz:system/etc/hardkernel-720.bmp.gz
 
 # remote IME config file
