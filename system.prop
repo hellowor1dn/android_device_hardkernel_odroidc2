@@ -1,7 +1,7 @@
 # Set display related config
 ro.platform.has.mbxuimode=true
 ro.platform.has.realoutputmode=true
-ro.platform.keepbackground.app=com.droidlogic.PPPoE
+
 #camera max to 720p
 ro.camera.preview.MaxSize=1280x720
 ro.camera.preview.LimitedRate=1280x720x30,640x480x30,320x240x28
@@ -9,11 +9,6 @@ ro.camera.preview.UseMJPEG=1
 
 #if wifi Only
 ro.radio.noril=false
-
-ro.sf.lcd_density=240
-
-#if need pppoe
-ro.net.pppoe=true
 
 #the prop is used for enable or disable
 #DD+/DD force output when HDMI EDID is not supported

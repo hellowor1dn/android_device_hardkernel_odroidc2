@@ -78,7 +78,8 @@ PRODUCT_COPY_FILES += \
     device/hardkernel/odroidc2/fstab.verity.odroidc2:root/fstab.odroidc2
 else
 PRODUCT_COPY_FILES += \
-    device/hardkernel/odroidc2/fstab.odroidc2:root/fstab.odroidc2
+    device/hardkernel/odroidc2/fstab.odroidc2:root/fstab.odroidc2 \
+    device/hardkernel/odroidc2/fstab.odroidc2.sdboot:root/fstab.odroidc2.sdboot
 endif # ifeq ($(BUILD_WITH_DM_VERITY), true)
 
 #-----------------------------------------------------------------------------
@@ -136,27 +137,17 @@ PRODUCT_COPY_FILES += \
 #BLUETOOTH_MODULE := AP6354
 #include device/hardkernel/common/bluetooth.mk
 
-
-#########################################################################
-#
-#                                                ConsumerIr
-#
-#########################################################################
-
-#PRODUCT_PACKAGES += \
-#    consumerir.amlogic \
-#    SmartRemote
-#PRODUCT_COPY_FILES += \
-#    frameworks/native/data/etc/android.hardware.consumerir.xml:system/etc/permissions/android.hardware.consumerir.xml
-
-
-PRODUCT_PACKAGES += libbt-vendor
-
-ifeq ($(SUPPORT_HDMIIN),true)
-PRODUCT_PACKAGES += \
-    libhdmiin \
-    HdmiIn
-endif
+# Device specific system feature description
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
+    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.hdmi.cec.xml:system/etc/permissions/android.hardware.hdmi.cec.xml
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml
@@ -175,24 +166,8 @@ include device/hardkernel/common/audio.mk
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml
 
-
-
-#########################################################################
-#
-#                                                PlayReady DRM
-#
-#########################################################################
-#export BOARD_PLAYREADY_LEVEL=3 for PlayReady+NOTVP
-#export BOARD_PLAYREADY_LEVEL=1 for PlayReady+OPTEE+TVP
-#########################################################################
-#
-#                                                Verimatrix DRM
-##########################################################################
-#verimatrix web
-BUILD_WITH_VIEWRIGHT_WEB := false
-#verimatrix stb
-BUILD_WITH_VIEWRIGHT_STB := false
-#########################################################################
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/files/hardkernel-720.bmp.gz:$(PRODUCT_OUT)/hardkernel-720.bmp.gz
 
 
 #DRM Widevine
@@ -251,6 +226,12 @@ BUILD_WITH_LOWMEM_COMMON_CONFIG := true
 
 BOARD_USES_USB_PM := true
 
+PRODUCT_PACKAGES += \
+	Development \
+	Utility \
+	updater \
+	Superuser \
+	su
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/Third_party_apk_camera.xml:system/etc/Third_party_apk_camera.xml \
 
@@ -258,3 +239,4 @@ TARGET_BUILD_CTS:= true
 TARGET_BUILD_GOOGLE_ATV:= false
 TARGET_BUILD_NETFLIX:= false
 include device/hardkernel/common/software.mk
+$(call inherit-product-if-exists, device/hardkernel/proprietary/proprietary.mk)

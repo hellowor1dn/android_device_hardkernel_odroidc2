@@ -15,10 +15,13 @@
 #
 
 PRODUCT_COPY_FILES += \
-    device/hardkernel/odroidc2/init.odroidc2.rc:root/init.odroidc2.rc \
+    device/hardkernel/odroidc2/init.odroidc2.board.rc:root/init.odroidc2.board.rc \
     device/hardkernel/odroidc2/init.odroidc2.usb.rc:root/init.odroidc2.usb.rc \
-    device/hardkernel/odroidc2/ueventd.odroidc2.rc:root/ueventd.odroidc2.rc \
-    device/hardkernel/odroidc2/init.odroidc2.board.rc:root/init.odroidc2.board.rc
+    device/hardkernel/odroidc2/init.odroidc2.rc:root/init.odroidc2.rc \
+    device/hardkernel/odroidc2/ueventd.odroidc2.rc:root/ueventd.odroidc2.rc
+
+PRODUCT_COPY_FILES += \
+    device/hardkernel/odroidc2/recovery/init.recovery.odroidc2.rc:root/init.recovery.odroidc2.rc
 
 PRODUCT_COPY_FILES += \
     device/hardkernel/odroidc2/files/media_profiles.xml:system/etc/media_profiles.xml \
@@ -27,7 +30,16 @@ PRODUCT_COPY_FILES += \
     device/hardkernel/odroidc2/files/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
     device/hardkernel/odroidc2/files/mixer_paths.xml:system/etc/mixer_paths.xml \
     device/hardkernel/odroidc2/files/mesondisplay.cfg:system/etc/mesondisplay.cfg \
-    frameworks/native/data/etc/android.hardware.hdmi.cec.xml:system/etc/permissions/android.hardware.hdmi.cec.xml
+    device/hardkernel/odroidc2/files/boot.ini.template:system/etc/boot.ini.template \
+    device/hardkernel/odroidc2/files/preinstall.sh:system/bin/preinstall.sh \
+    device/hardkernel/odroidc2/files/makebootini.sh:system/bin/makebootini.sh \
+    device/hardkernel/odroidc2/files/set_density.sh:system/bin/set_density.sh \
+    device/hardkernel/odroidc2/files/set_density2.sh:system/bin/set_density2.sh \
+    device/hardkernel/odroidc2/files/usb_reset.sh:system/bin/usb_reset.sh \
+    device/hardkernel/odroidc2/files/rtc_sync.sh:system/bin/rtc_sync.sh \
+    device/hardkernel/odroidc2/files/ups3.sh:system/bin/ups3.sh \
+    device/hardkernel/odroidc2/files/rotation.sh:system/bin/rotation.sh \
+    device/hardkernel/odroidc2/files/hardkernel-720.bmp.gz:system/etc/hardkernel-720.bmp.gz
 
 # remote IME config file
 PRODUCT_COPY_FILES += \
