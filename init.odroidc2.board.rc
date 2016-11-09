@@ -72,12 +72,6 @@ service su_daemon /system/xbin/su --daemon
     group root
     oneshot
 
-service auto_density /system/bin/set_density.sh
-    class main
-    user root
-    group root
-    oneshot
-
 service rtc_daemon /system/bin/rtc_sync.sh
     class main
     user root
