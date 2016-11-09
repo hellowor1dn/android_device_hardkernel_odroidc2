@@ -157,6 +157,9 @@ PRODUCT_COPY_FILES += \
 BOARD_ALSA_AUDIO=tiny
 include device/hardkernel/common/audio.mk
 
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory
+
 #########################################################################
 #
 #                                                Camera
