@@ -21,5 +21,4 @@ elif [ "$1" == "landscape" ]; then # else landscape
     setprop config.override_forced_orient false
 fi
 setprop persist.demo.hdmirotation $1
-/bin/set_density2.sh
 mount -o ro,remount /system
