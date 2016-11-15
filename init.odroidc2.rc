@@ -28,6 +28,17 @@ on init
     chmod 666 /sys/class/tsync/vpause_flag
     chmod 0666 /dev/amstream_sub_read
 
+    chmod 666 /sys/class/tv/policy_fr_auto
+    chmod 666 /sys/class/tv/policy_fr_auto_switch
+    chmod 666 /sys/class/video/brightness
+    chmod 666 /sys/class/video/contrast
+    chmod 666 /sys/class/display/mode
+    chmod 666 /sys/class/display/axis
+    chmod 666 /dev/amvideo
+    chmod 666 /dev/amstream*
+    chmod 666 /sys/class/audiodsp/digital_raw
+    chmod 666 /sys/class/ppmgr/ppmgr_vframe_states
+
     # for zram
     mkdir /swap_zram0 0700 root root
 
@@ -74,7 +85,7 @@ on boot
 
     chown media system /sys/class/amhdmitx/amhdmitx0/aud_ch
     chmod 0664 /sys/class/amhdmitx/amhdmitx0/aud_ch
-    insmod  /system/lib/aml_thermal.ko
+    insmod  /system/lib/modules/aml_thermal.ko
 
     chown media system /sys/class/tsync/pts_video
     chown media system /sys/class/tsync/pts_audio
@@ -96,7 +107,8 @@ on boot
 
     chmod 0664 /sys/class/graphics/fb0/blank
     chmod 0664 /sys/class/graphics/fb1/blank
-    chmod 0664 /sys/class/graphics/fb0/free_scale_switch
+    chmod 0666 /sys/class/graphics/fb0/window_axis
+    chmod 0666 /sys/class/graphics/fb0/free_scale
 
     chown media system /sys/class/video/blackout_policy
     chown media system /sys/class/video/screen_mode
@@ -270,9 +282,9 @@ on boot
 
     chmod 664 /sys/class/thermal/thermal_zone0/mode
     chmod 664 /sys/class/thermal/thermal_zone1/mode
-    chmod 664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-    chmod 664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-    chmod 664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    chmod 666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chmod 666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    chmod 666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
     chmod 664 /sys/devices/system/cpu/cpufreq/conservative/freq_step
     chmod 664 /sys/devices/system/cpu/cpufreq/performance2/sampling_rate
     chmod 664 /sys/devices/system/cpu/cpufreq/performance2/down_threshold
