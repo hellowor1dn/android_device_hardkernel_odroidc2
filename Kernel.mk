@@ -45,6 +45,11 @@ mdpath=`find $(KERNEL_MODULES_OUT) -type f -name modules.dep`;\
        fi
 endef
 
+define btusb-modules
+	$(MAKE) -C $(shell pwd)/$(PRODUCT_OUT)/obj/KERNEL_OBJ M=$(shell pwd)/vendor/broadcom/btusb/csr8510/ ARCH=$(KERNEL_ARCH) CROSS_COMPILE=$(CROSS_COMPILE) modules
+	cp $(shell pwd)/vendor/broadcom/btusb/csr8510/btusb.ko $(TARGET_OUT)/lib/modules/
+endef
+
 $(KERNEL_OUT):
 	mkdir -p $(KERNEL_OUT)
 
@@ -70,6 +75,7 @@ $(KERNEL_IMAGE): $(KERNEL_OUT) $(KERNEL_CONFIG)
 	$(gpu-modules)
 	$(cp-modules)
 	$(mv-modules)
+	$(btusb-modules)
 	$(clean-module-folder)
 
 .PHONY: kernelconfig
