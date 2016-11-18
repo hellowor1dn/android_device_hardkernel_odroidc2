@@ -1,7 +1,5 @@
 import init.odroidc2.usb.rc
 import init.odroidc2.board.rc
-#import init.odroidc2.wifi.rc
-#import init.mtk.rc
 
 on early-init
 
@@ -322,8 +320,6 @@ on boot
     chown root system /sys/module/di/parameters/det3d_en
     chown root system /sys/module/di/parameters/prog_proc_config
 
-#   start sdcard
-
     write /sys/class/vfm/map "rm default"
     write /sys/class/vfm/map "add default decoder ppmgr deinterlace amvideo"
 
@@ -331,7 +327,6 @@ on boot
 
 on fs
     mount_all /fstab.odroidc2
-    setprop ro.crypto.fuse_sdcard true
     swapon_all /fstab.odroidc2
 
 on aml-firstboot-init
@@ -346,30 +341,6 @@ service system_control /system/bin/systemcontrol
     user root
     group system
     seclabel u:r:system_control:s0
-
-# virtual sdcard daemon running as media_rw (1023)
-#service sdcard /system/bin/sdcard -u 1023 -g 1023 /data/media /mnt/shell/emulated
-#   class late_start
-
-service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard1 /storage/sdcard1
-    class late_start
-    disabled
-
-service fuse_udisk0 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/udisk0 /storage/udisk0
-    class late_start
-    disabled
-
-service fuse_udisk1 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/udisk1 /storage/udisk1
-    class late_start
-    disabled
-
-service fuse_sr0 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sr0 /storage/sr0
-    class late_start
-    disabled
-
-service fuse_loop /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/loop /storage/loop
-    class late_start
-    disabled
 
 # Set watchdog timer to 30 seconds and pet it every 10 seconds to get a 20 second margin
 service watchdogd /sbin/watchdogd 10 20
