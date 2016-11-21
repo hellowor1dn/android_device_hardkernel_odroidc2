@@ -132,10 +132,10 @@ PRODUCT_COPY_FILES += \
 #
 #########################################################################
 
-#BOARD_HAVE_BLUETOOTH := true
-#BCM_BLUETOOTH_LPM_ENABLE := true
-#BLUETOOTH_MODULE := AP6354
-#include device/hardkernel/common/bluetooth.mk
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := true
+include device/hardkernel/common/bluetooth.mk
 
 # Device specific system feature description
 PRODUCT_COPY_FILES += \
