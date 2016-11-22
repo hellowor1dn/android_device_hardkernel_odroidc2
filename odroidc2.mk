@@ -154,7 +154,8 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 #
-BOARD_ALSA_AUDIO=tiny
+BOARD_ALSA_AUDIO := tiny
+BOARD_USE_USB_AUDIO := true
 include device/hardkernel/common/audio.mk
 
 PRODUCT_PACKAGES += \
