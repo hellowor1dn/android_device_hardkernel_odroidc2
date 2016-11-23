@@ -95,7 +95,7 @@ service.adb.tcp.port=5555
 ro.nrdp.modelgroup=S905
 
 #Bluetooth Audio A2dp Sink
-persist.service.bt.a2dp.sink false
+persist.service.bt.a2dp.sink=false
 
 ro.sf.lcd_density=160
 
