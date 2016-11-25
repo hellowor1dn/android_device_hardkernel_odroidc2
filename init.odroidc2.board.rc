@@ -1,4 +1,5 @@
 import init.odroidc2.usb.rc
+import init.superuser.rc
 
 on early-init
     loglevel 3

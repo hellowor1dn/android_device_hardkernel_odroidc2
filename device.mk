@@ -18,6 +18,7 @@ PRODUCT_COPY_FILES += \
     device/hardkernel/odroidc2/init.odroidc2.board.rc:root/init.odroidc2.board.rc \
     device/hardkernel/odroidc2/init.odroidc2.usb.rc:root/init.odroidc2.usb.rc \
     device/hardkernel/odroidc2/init.odroidc2.rc:root/init.odroidc2.rc \
+    device/hardkernel/odroidc2/init.superuser.rc:root/init.superuser.rc \
     device/hardkernel/odroidc2/ueventd.odroidc2.rc:root/ueventd.odroidc2.rc
 
 PRODUCT_COPY_FILES += \
