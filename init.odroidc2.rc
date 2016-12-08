@@ -424,19 +424,6 @@ service usbpm /system/bin/usbtestpm
 #    group system
 #    seclabel u:r:imageserver:s0
 
-service instaboot /system/bin/instabootserver
-    class core
-    disabled
-    user root
-    group root
-    seclabel u:r:instaboot:s0
-
-on property:config.disable_instaboot=false
-    start instaboot
-
-on property:instaboot.status=completed
-    start remotecfg
-
 on property:dev.bootcomplete=1
     start usbpm
 
