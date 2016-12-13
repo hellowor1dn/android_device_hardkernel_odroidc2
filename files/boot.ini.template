@@ -85,7 +85,10 @@ setenv max_freq "1536"  # 1.536GHz
 # setenv maxcpus "3"
 setenv maxcpus "4"
 
-setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} vout=${vout_mode} disablehpd=${disablehpd} logo=${logoopt} ${androidopt} ${selinuxopt} suspend_hdmiphy=${suspend_hdmiphy} led_onoff=${led_onoff} max_freq=${max_freq} maxcpus=${maxcpus}"
+# disable vu7
+setenv disable_vu7 "false"
+
+setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} vout=${vout_mode} disablehpd=${disablehpd} logo=${logoopt} ${androidopt} ${selinuxopt} suspend_hdmiphy=${suspend_hdmiphy} led_onoff=${led_onoff} max_freq=${max_freq} maxcpus=${maxcpus} disable_vu7=${disable_vu7}"
 
 save
 
