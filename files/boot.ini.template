@@ -71,13 +71,13 @@ suspend_hdmiphy=0
 # max cpu frequency in dvfs table / in MHz unit
 # setenv max_freq "2016"  # 2.016GHz
 # setenv max_freq "1944"  # 1.944GHz
-# setenv max_freq "1944"  # 1.944GHz
 # setenv max_freq "1920"  # 1.920GHz
 # setenv max_freq "1896"  # 1.896GHz
 # setenv max_freq "1752"  # 1.752GHz
 # setenv max_freq "1680"  # 1.680GHz
 # setenv max_freq "1656"  # 1.656GHz
-setenv max_freq "1536"  # 1.536GHz
+# setenv max_freq "1536"  # 1.536GHz
+setenv max_freq "1536"
 
 # max cpu-cores
 # setenv maxcpus "1"
