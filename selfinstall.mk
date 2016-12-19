@@ -103,7 +103,7 @@ $(PRODUCT_OUT)/selfinstall-$(TARGET_DEVICE).bin: \
 	dd if=$(PRODUCT_OUT)/obj/KERNEL_OBJ/arch/arm64/boot/Image of=$@ bs=512 seek=1632
 	dd if=$(INSTALLED_RECOVERYIMAGE_TARGET) of=$@ bs=512 seek=34400
 	dd if=device/hardkernel/$(TARGET_PRODUCT)/files/hardkernel-720.bmp.gz of=$@ \
-		bs=512 seek=58976
+		bs=512 seek=61024
 	dd if=$(SELFINSTALL_CACHE_IMAGE) of=$@ bs=512 seek=65536
 	sync
 	@echo "Done."
