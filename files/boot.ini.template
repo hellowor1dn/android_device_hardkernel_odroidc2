@@ -96,5 +96,7 @@ showlogo ${hdmimode}
 #usb pwren
 
 movi read dtb 0 ${dtbaddr}
+# load kernel from vat or boot partition.
 movi read boot 0 ${loadaddr}
+#fatload mmc 0:1 ${loadaddr} Image
 booti ${loadaddr} - ${dtbaddr}
