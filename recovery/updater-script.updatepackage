@@ -41,6 +41,11 @@ ui_print("   removed old Utility");
 run_program("/bin/rm", "-rf", "/system/app/Utility");
 unmount("/system");
 
+ui_print("   Image is copying to /sdcard/");
+mount("vfat", "EMMC", "/dev/block/mmcblk0p1", "/sdcard");
+run_program("/bin/cp", "/system/etc/Image", "/sdcard/Image");
+unmount("/sdcard");
+
 set_progress(0.9000);
 
 ui_print("Android update is completed.\nHave fun with ODROID-C2!\n\n");
