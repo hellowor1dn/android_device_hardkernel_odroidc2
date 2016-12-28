@@ -70,13 +70,6 @@ service su_daemon /system/xbin/su --daemon
     group root
     oneshot
 
-service rtc_daemon /system/bin/rtc_sync.sh
-    class main
-    user root
-    group root
-    disabled
-    oneshot
-
 service ups /system/bin/ups3.sh
     class core
     user root
@@ -108,6 +101,3 @@ service rotation /system/bin/rotation.sh
 on property:dev.bootcomplete=1
     start usb_reset
     start makebootini
-
-on property:init.svc.usb_reset=stopped
-    start rtc_daemon
