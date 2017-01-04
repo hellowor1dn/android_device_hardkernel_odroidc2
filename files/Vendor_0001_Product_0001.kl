@@ -76,6 +76,16 @@ key 52    PERIOD
 key 53    SLASH
 key 28    ENTER
 
+key 75		F3
+key 76		F4
+key 77		F5
+key 64		F6
+key 65		F7
+key 66		F8
+key 67		F9
+key 68		F10
+key 69		F11
+
 key 56    ALT_LEFT
 key 100   ALT_RIGHT
 key 42    SHIFT_LEFT
