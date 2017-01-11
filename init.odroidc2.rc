@@ -339,6 +339,7 @@ on boot
 
 on fs
     mount_all /fstab.odroidc2
+    setprop ro.crypto.fuse_sdcard true
     swapon_all /fstab.odroidc2
 
 on aml-firstboot-init
@@ -349,7 +350,7 @@ on aml-firstboot-init
     confirm_formated ext4 /dev/block/cache /cache
 
 service system_control /system/bin/systemcontrol
-    class core
+    class main
     user root
     group system
     seclabel u:r:system_control:s0

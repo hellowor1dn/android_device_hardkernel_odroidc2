@@ -107,7 +107,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Change this to match target country
 # 11 North America; 14 Japan; 13 rest of world
-PRODUCT_DEFAULT_WIFI_CHANNELS := 13
+PRODUCT_DEFAULT_WIFI_CHANNELS := 11
 
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
@@ -154,8 +154,7 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 #
-BOARD_ALSA_AUDIO := tiny
-BOARD_USE_USB_AUDIO := true
+BOARD_ALSA_AUDIO=tiny
 include device/hardkernel/common/audio.mk
 
 PRODUCT_PACKAGES += \
@@ -172,6 +171,22 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/files/hardkernel-720.bmp.gz:$(PRODUCT_OUT)/hardkernel-720.bmp.gz
+#########################################################################
+#
+#                                                PlayReady DRM
+#
+#########################################################################
+#export BOARD_PLAYREADY_LEVEL=3 for PlayReady+NOTVP
+#export BOARD_PLAYREADY_LEVEL=1 for PlayReady+OPTEE+TVP
+#########################################################################
+#
+#                                                Verimatrix DRM
+##########################################################################
+#verimatrix web
+BUILD_WITH_VIEWRIGHT_WEB := false
+#verimatrix stb
+BUILD_WITH_VIEWRIGHT_STB := false
+#########################################################################
 
 
 #DRM Widevine
@@ -242,9 +257,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/Third_party_apk_camera.xml:system/etc/Third_party_apk_camera.xml \
 
-TARGET_BUILD_CTS:= true
-TARGET_BUILD_GOOGLE_ATV:= false
-TARGET_BUILD_NETFLIX:= false
+TARGET_BUILD_CTS:= false
 include device/hardkernel/common/software.mk
 # ODROID USBIO-SENSOR
 BOARD_HAVE_ODROID_SENSOR := true
