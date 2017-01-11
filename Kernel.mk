@@ -25,7 +25,7 @@ PREFIX_CROSS_COMPILE=aarch64-linux-gnu-
 define cp-modules
 	mkdir -p $(PRODUCT_OUT)/root/boot
 
-	cp $(MALI_OUT)/mali/mali.ko $(PRODUCT_OUT)/root/boot
+	cp $(MALI_OUT)/mali.ko $(PRODUCT_OUT)/root/boot
 	cp $(KERNEL_OUT)/arch/$(KERNEL_ARCH)/boot/dts/$(KERNEL_DEVICETREE).dtb $(PRODUCT_OUT)/
 endef
 
