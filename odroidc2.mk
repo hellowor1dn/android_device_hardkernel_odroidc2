@@ -32,7 +32,6 @@ endif
 
 $(call inherit-product, device/hardkernel/common/products/mbox/product_mbox.mk)
 $(call inherit-product, device/hardkernel/odroidc2/device.mk)
-$(call inherit-product-if-exists, vendor/google/products/gms.mk)
 
 # odroidc2:
 
