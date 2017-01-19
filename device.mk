@@ -44,9 +44,6 @@ PRODUCT_COPY_FILES += \
     device/hardkernel/odroidc2/files/Vendor_0001_Product_0001.kl:/system/usr/keylayout/Vendor_0001_Product_0001.kl \
     device/hardkernel/odroidc2/files/Generic.kl:/system/usr/keylayout/Generic.kl
 
-PRODUCT_AAPT_CONFIG := xlarge hdpi xhdpi
-PRODUCT_AAPT_PREF_CONFIG := hdpi
-
 PRODUCT_CHARACTERISTICS := tablet
 
 DEVICE_PACKAGE_OVERLAYS := \
