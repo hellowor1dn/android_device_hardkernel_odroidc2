@@ -97,3 +97,6 @@ BOARD_SUPPORT_EXTERNAL_GPS := true
 include device/hardkernel/common/sepolicy.mk
 include device/hardkernel/common/gpu/mali450-user-$(TARGET_ARCH).mk
 #MALLOC_IMPL := dlmalloc
+
+SUPERUSER_EMBEDDED := true
+SUPERUSER_PACKAGE_PREFIX := com.android.settings.cyanogenmod.superuser

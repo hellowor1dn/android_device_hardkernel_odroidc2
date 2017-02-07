@@ -251,8 +251,8 @@ PRODUCT_PACKAGES += \
 	Development \
 	Utility \
 	updater \
-	Superuser \
 	su
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/Third_party_apk_camera.xml:system/etc/Third_party_apk_camera.xml \
 
