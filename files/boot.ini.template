@@ -56,6 +56,10 @@ setenv selinuxopt "androidboot.selinux=disabled"
 # "dvi" - For DVI interface
 setenv vout_mode "hdmi"
 
+# Display Auto Detection
+# "false" or "true"
+setenv display_autodetect "true"
+
 # HPD enable/disable option
 setenv disablehpd "false"
 
@@ -88,7 +92,10 @@ setenv maxcpus "4"
 # disable vu7
 setenv disable_vu7 "false"
 
-setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} hdmitx=${cecconfig} vout=${vout_mode} disablehpd=${disablehpd} logo=${logoopt} ${androidopt} ${selinuxopt} suspend_hdmiphy=${suspend_hdmiphy} led_onoff=${led_onoff} max_freq=${max_freq} maxcpus=${maxcpus} disable_vu7=${disable_vu7}"
+if test "${display_autodetect}" = "true"; then usb pwren; hdmitx edid; fi
+if test "${hdmimode}" = "custombuilt"; then setenv cmode "modeline=${modeline}"; fi
+
+setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} ${cmode} hdmitx=${cecconfig} vout=${vout_mode} disablehpd=${disablehpd} logo=${logoopt} ${androidopt} ${selinuxopt} suspend_hdmiphy=${suspend_hdmiphy} led_onoff=${led_onoff} max_freq=${max_freq} maxcpus=${maxcpus} disable_vu7=${disable_vu7}"
 
 save
 
