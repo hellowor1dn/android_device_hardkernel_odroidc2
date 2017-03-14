@@ -59,6 +59,8 @@ ro.kernel.android.gps.speed=9600
 #hdmi rotation
 persist.demo.hdmirotation=landscape
 
+touchscreen.reverse=false
+
 #Bluetooth Audio A2dp Sink
 persist.service.bt.a2dp.sink=false
 
