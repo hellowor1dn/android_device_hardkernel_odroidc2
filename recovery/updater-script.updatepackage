@@ -43,7 +43,6 @@ run_program("/bin/rm", "-rf", "/system/etc/Image");
 
 ui_print("   Image is copying to /sdcard/");
 mount("vfat", "EMMC", "/dev/block/mmcblk0p1", "/sdcard");
-run_program("/bin/rm", "-rf", "/sdcard/Image");
 run_program("/bin/cp", "/system/etc/Image_android", "/sdcard/Image_android");
 unmount("/sdcard");
 unmount("/system");
