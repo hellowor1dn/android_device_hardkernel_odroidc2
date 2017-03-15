@@ -2,7 +2,7 @@
 -include device/hardkernel/common/gpu.mk
 
 INSTALLED_KERNEL_TARGET := $(PRODUCT_OUT)/kernel
-INSTALLED_I2CKERNEL_TARGET := $(PRODUCT_OUT)/system/etc/Image
+INSTALLED_I2CKERNEL_TARGET := $(PRODUCT_OUT)/system/etc/Image_android
 
 KERNEL_ARCH := arm64
 KERNEL_DEVICETREE := meson64_odroidc2

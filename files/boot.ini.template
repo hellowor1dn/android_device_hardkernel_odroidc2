@@ -111,5 +111,5 @@ showlogo ${hdmimode}
 movi read dtb 0 ${dtbaddr}
 # load kernel from vat or boot partition.
 movi read boot 0 ${loadaddr}
-#fatload mmc 0:1 ${loadaddr} Image
+#fatload mmc 0:1 ${loadaddr} Image_android
 booti ${loadaddr} - ${dtbaddr}
