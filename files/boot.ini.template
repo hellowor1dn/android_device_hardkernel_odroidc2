@@ -93,7 +93,7 @@ setenv maxcpus "4"
 setenv disable_vu7 "false"
 
 # gpio power key : J2 (2x20) Pin#35, GPIOY.BIT3
-setenv gpiopower "214"
+#setenv gpiopower "214"
 
 # usb timing tweak
 setenv usbmulticam "false"
