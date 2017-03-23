@@ -42,6 +42,10 @@ PRODUCT_COPY_FILES += \
     device/hardkernel/odroidc2/files/remote.conf:system/etc/remote.conf \
     device/hardkernel/odroidc2/files/Vendor_0001_Product_0001.kl:/system/usr/keylayout/Vendor_0001_Product_0001.kl
 
+# VU8C Backlight script file
+PRODUCT_COPY_FILES += \
+    device/hardkernel/odroidc2/files/vu8c_backlight_c2_android.sh:/system/bin/vu8c_backlight_c2_android.sh
+
 PRODUCT_CHARACTERISTICS := tablet
 
 DEVICE_PACKAGE_OVERLAYS := \
