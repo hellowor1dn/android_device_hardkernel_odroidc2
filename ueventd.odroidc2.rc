@@ -91,3 +91,4 @@
 
 /dev/gpioctrl             0666   system     system
 /dev/gpiomem             0666   system     system
+/dev/odroid-encoder      0666   system     system
