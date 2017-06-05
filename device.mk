@@ -62,3 +62,6 @@ $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-he
 # set default USB configuration
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
+
+PRODUCT_COPY_FILES += \
+    device/hardkernel/odroidc2/files/odroid-usbgps.xml:system/etc/odroid-usbgps.xml
