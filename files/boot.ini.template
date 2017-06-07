@@ -72,6 +72,15 @@ setenv overscan_right "0"
 setenv led_onoff "on"
 suspend_hdmiphy=0
 
+# Enable/Disable HDMI CEC Control
+setenv hdmi_cec  "0"            # Disabled
+# setenv hdmi_cec  "1"          # Enabled
+# setenv hdmi_cec  "2"          # Enabled but disable auto TV switching ON
+
+# Force HDMI to use RGB colorspace regardless of TV request
+setenv hdmi_forcergb "0"      # Disabled
+# setenv hdmi_forcergb "1"        # Enabled
+
 # max cpu frequency in dvfs table / in MHz unit
 # setenv max_freq "2016"  # 2.016GHz
 # setenv max_freq "1944"  # 1.944GHz
@@ -102,6 +111,11 @@ setenv touch_invert_y "false"
 # usb timing tweak
 setenv usbmulticam "false"
 
+if test "${hdmi_cec}" = "0"; then setenv hdmitx "hdmitx=cec0"; fi
+if test "${hdmi_cec}" = "1"; then setenv hdmitx "hdmitx=cecf"; fi
+if test "${hdmi_cec}" = "2"; then setenv hdmitx "hdmitx=cec7"; fi
+if test "${hdmi_forcergb}" = "1"; then setenv hdmitx "${hdmitx},forcergb"; fi
+
 if test "${display_autodetect}" = "true"; then usb pwren; hdmitx edid; fi
 if test "${hdmimode}" = "custombuilt"; then setenv cmode "modeline=${modeline}"; fi
 
@@ -111,7 +125,7 @@ if test "${hdmimode}" = "custombuilt"; then setenv cmode "modeline=${modeline}";
 # ODROID-VU8 : backlight "invert"
 setenv backlight_pwm "no"
 
-setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} ${cmode} hdmitx=${cecconfig} vout=${vout_mode} disablehpd=${disablehpd} logo=${logoopt} ${androidopt} ${selinuxopt} suspend_hdmiphy=${suspend_hdmiphy} led_onoff=${led_onoff} max_freq=${max_freq} maxcpus=${maxcpus} disable_vu7=${disable_vu7} touch_invert_x=${touch_invert_x} touch_invert_y=${touch_invert_y} usbmulticam=${usbmulticam} gpiopower=${gpiopower} backlight_pwm=${backlight_pwm}"
+setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} ${cmode} ${hdmitx} vout=${vout_mode} disablehpd=${disablehpd} logo=${logoopt} ${androidopt} ${selinuxopt} suspend_hdmiphy=${suspend_hdmiphy} led_onoff=${led_onoff} max_freq=${max_freq} maxcpus=${maxcpus} disable_vu7=${disable_vu7} touch_invert_x=${touch_invert_x} touch_invert_y=${touch_invert_y} usbmulticam=${usbmulticam} gpiopower=${gpiopower} backlight_pwm=${backlight_pwm}"
 
 save
 
