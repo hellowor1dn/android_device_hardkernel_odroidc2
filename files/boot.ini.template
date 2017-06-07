@@ -105,7 +105,13 @@ setenv usbmulticam "false"
 if test "${display_autodetect}" = "true"; then usb pwren; hdmitx edid; fi
 if test "${hdmimode}" = "custombuilt"; then setenv cmode "modeline=${modeline}"; fi
 
-setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} ${cmode} hdmitx=${cecconfig} vout=${vout_mode} disablehpd=${disablehpd} logo=${logoopt} ${androidopt} ${selinuxopt} suspend_hdmiphy=${suspend_hdmiphy} led_onoff=${led_onoff} max_freq=${max_freq} maxcpus=${maxcpus} disable_vu7=${disable_vu7} touch_invert_x=${touch_invert_x} touch_invert_y=${touch_invert_y} usbmulticam=${usbmulticam} gpiopower=${gpiopower}"
+# Enable backlight_pwm
+# disable : backlight "no"
+# ODROID-VU5/7 : backlight "yes"
+# ODROID-VU8 : backlight "invert"
+setenv backlight_pwm "no"
+
+setenv bootargs "${rootopt} ${consoleopt} hdmimode=${hdmimode} ${cmode} hdmitx=${cecconfig} vout=${vout_mode} disablehpd=${disablehpd} logo=${logoopt} ${androidopt} ${selinuxopt} suspend_hdmiphy=${suspend_hdmiphy} led_onoff=${led_onoff} max_freq=${max_freq} maxcpus=${maxcpus} disable_vu7=${disable_vu7} touch_invert_x=${touch_invert_x} touch_invert_y=${touch_invert_y} usbmulticam=${usbmulticam} gpiopower=${gpiopower} backlight_pwm=${backlight_pwm}"
 
 save
 
