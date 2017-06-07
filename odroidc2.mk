@@ -186,6 +186,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
 	gps.odroidc2
 
+# VU8 backlight
+PRODUCT_PACKAGES += \
+	lights.odroidc2
+
 # U-Boot Env Tools
 PRODUCT_PACKAGES += \
 	fw_printenv \
