@@ -106,3 +106,10 @@ service usb_reset /system/bin/usb_reset.sh
 on property:dev.bootcomplete=1
     start usb_reset
     start makebootini
+
+service backlight /system/bin/vu8_backlight.sh
+    class core
+    user root
+    group root
+    disabled
+    oneshot
