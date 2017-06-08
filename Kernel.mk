@@ -47,7 +47,6 @@ mdpath=`find $(KERNEL_MODULES_OUT) -type f -name modules.dep`;\
        mpath=`dirname $$mdpath`; rm -rf $$mpath;\
        fi
 endef
-
 define btusb-modules
 	$(MAKE) -C $(shell pwd)/$(PRODUCT_OUT)/obj/KERNEL_OBJ M=$(shell pwd)/vendor/broadcom/btusb/csr8510/ ARCH=$(KERNEL_ARCH) CROSS_COMPILE=$(CROSS_COMPILE) modules
 	cp $(shell pwd)/vendor/broadcom/btusb/csr8510/btusb.ko $(TARGET_OUT)/lib/modules/
@@ -70,20 +69,10 @@ $(I2CKERNEL_CONFIG): $(I2CKERNEL_OUT)
 $(KERNEL_IMAGE): $(KERNEL_OUT) $(KERNEL_CONFIG)
 	$(MAKE) -C $(KERNEL_ROOTDIR) O=../$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) \
 		CROSS_COMPILE=$(PREFIX_CROSS_COMPILE)
-	$(MAKE) -C $(KERNEL_ROOTDIR) O=../$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) \
-		CROSS_COMPILE=$(PREFIX_CROSS_COMPILE) \
-		INSTALL_MOD_PATH=../../$(KERNEL_MODULES_INSTALL) INSTALL_MOD_STRIP=1 \
-		modules_install
 
 $(I2CKERNEL_IMAGE): $(I2CKERNEL_OUT) $(I2CKERNEL_CONFIG)
 	$(MAKE) -C $(KERNEL_ROOTDIR) O=../$(I2CKERNEL_OUT) ARCH=$(KERNEL_ARCH) \
 		CROSS_COMPILE=$(PREFIX_CROSS_COMPILE)
-	$(MAKE) -C $(KERNEL_ROOTDIR) O=../$(I2CKERNEL_OUT) ARCH=$(KERNEL_ARCH) \
-		CROSS_COMPILE=$(PREFIX_CROSS_COMPILE) \
-		INSTALL_MOD_PATH=../../$(KERNEL_MODULES_INSTALL) INSTALL_MOD_STRIP=1 \
-		modules_install
-	cp $(I2CKERNEL_IMAGE) $(INSTALLED_I2CKERNEL_TARGET)
-
 	$(MAKE) -C hardware/backports O=../$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) \
 		CROSS_COMPILE=$(PREFIX_CROSS_COMPILE) KLIB_BUILD=../../$(KERNEL_OUT) \
 		defconfig-odroidc
@@ -94,6 +83,8 @@ $(I2CKERNEL_IMAGE): $(I2CKERNEL_OUT) $(I2CKERNEL_CONFIG)
 	$(mv-modules)
 	$(btusb-modules)
 	$(clean-module-folder)
+	find $(KERNEL_OUT) -name *.ko | xargs -i cp {} $(PRODUCT_OUT)/system/lib/modules
+	find $(I2CKERNEL_OUT) -name *.ko | xargs -i cp {} $(PRODUCT_OUT)/system/lib/modules
 
 .PHONY: kernelconfig
 kernelconfig: $(KERNEL_OUT) $(KERNEL_CONFIG)
