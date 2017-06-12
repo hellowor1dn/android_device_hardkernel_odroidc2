@@ -101,10 +101,3 @@ service rotation /system/bin/rotation.sh
 on property:dev.bootcomplete=1
     start usb_reset
     start makebootini
-
-service vu8c_backlight /system/bin/vu8c_backlight_c2_android.sh
-    class main
-    user root
-    group root
-    disabled
-    oneshot
