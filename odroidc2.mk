@@ -272,6 +272,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
 	gps.odroidc2
 
+PRODUCT_COPY_FILES += \
+	device/hardkernel/odroidc2/files/odroid-usbgps.xml:root/odroid-usbgps.xml
+
 # VU8 backlight
 PRODUCT_PACKAGES += \
 	lights.odroidc2
