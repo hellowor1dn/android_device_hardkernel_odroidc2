@@ -7,3 +7,11 @@ for apk in $pkgs; do
 #        pm install $apk
         rm -f $apk
 done
+
+env=`fw_printenv`
+for x in $env;
+    do
+    case $x in
+        ddrclk=*) setprop ro.ddr.clock $x; break
+    esac
+done
