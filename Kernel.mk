@@ -85,6 +85,7 @@ $(I2CKERNEL_IMAGE): $(I2CKERNEL_OUT) $(I2CKERNEL_CONFIG)
 	$(clean-module-folder)
 	find $(KERNEL_OUT) -name *.ko | xargs -i cp {} $(PRODUCT_OUT)/system/lib/modules
 	find $(I2CKERNEL_OUT) -name *.ko | xargs -i cp {} $(PRODUCT_OUT)/system/lib/modules
+	$(ACP) $(I2CKERNEL_OUT)/arch/arm64/boot/Image $(INSTALLED_I2CKERNEL_TARGET)
 
 .PHONY: kernelconfig
 kernelconfig: $(KERNEL_OUT) $(KERNEL_CONFIG)
