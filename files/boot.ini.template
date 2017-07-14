@@ -72,11 +72,6 @@ setenv overscan_right "0"
 setenv led_onoff "on"
 suspend_hdmiphy=0
 
-# Enable/Disable HDMI CEC Control
-setenv hdmi_cec  "0"            # Disabled
-# setenv hdmi_cec  "1"          # Enabled
-# setenv hdmi_cec  "2"          # Enabled but disable auto TV switching ON
-
 # Force HDMI to use RGB colorspace regardless of TV request
 setenv hdmi_forcergb "0"      # Disabled
 # setenv hdmi_forcergb "1"        # Enabled
@@ -111,10 +106,8 @@ setenv touch_invert_y "false"
 # usb timing tweak
 setenv usbmulticam "false"
 
-if test "${hdmi_cec}" = "0"; then setenv hdmitx "hdmitx=cec0"; fi
-if test "${hdmi_cec}" = "1"; then setenv hdmitx "hdmitx=cecf"; fi
-if test "${hdmi_cec}" = "2"; then setenv hdmitx "hdmitx=cec7"; fi
-if test "${hdmi_forcergb}" = "1"; then setenv hdmitx "${hdmitx},forcergb"; fi
+setenv hdmitx "hdmitx=${cecconfig}"
+if test "${hdmi_forcergb}" = "1"; then setenv hdmitx "hdmitx=forcergb"; fi
 
 if test "${display_autodetect}" = "true"; then usb pwren; hdmitx edid; fi
 if test "${hdmimode}" = "custombuilt"; then setenv cmode "modeline=${modeline}"; fi
